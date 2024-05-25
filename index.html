@@ -1,11 +1,83 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-  <title>Mon Site Web</title>
-  <meta name="robots" content="noindex">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accueil - [Ton Nom]</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        header, nav, section, footer {
+            padding: 20px;
+            margin: 10px auto;
+            max-width: 800px;
+        }
+        header {
+            background: #f4f4f4;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: space-around;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+        }
+        section {
+            border-bottom: 1px solid #ddd;
+        }
+        footer {
+            text-align: center;
+            background: #f4f4f4;
+        }
+    </style>
 </head>
 <body>
-  <h1>Bienvenue sur mon site web</h1>
-  <p>Ceci est une page d'accueil simple.</p>
+    <header>
+        <h1>[Ton Nom]</h1>
+        <p>Étudiant en Physique, Passionné par l'IA et la Recherche</p>
+    </header>
+    <nav>
+        <a href="#about">À propos</a>
+        <a href="#cv">CV</a>
+        <a href="#engagements">Engagements actuels</a>
+        <a href="#productions">Productions</a>
+        <a href="#contact">Contact</a>
+    </nav>
+    <section id="about">
+        <h2>À propos de moi</h2>
+        <p>Brève biographie avec ta photo.</p>
+    </section>
+    <section id="cv">
+        <h2>CV</h2>
+        <p><a href="ton_cv.pdf" target="_blank">Télécharger mon CV</a></p>
+        <p>Résumé de ton CV.</p>
+    </section>
+    <section id="engagements">
+        <h2>Engagements actuels</h2>
+        <ul>
+            <li>Projet A : Description courte</li>
+            <li>Projet B : Description courte</li>
+        </ul>
+    </section>
+    <section id="productions">
+        <h2>Productions</h2>
+        <ul>
+            <li>Article/Rapport 1 : Description courte</li>
+            <li>Article/Rapport 2 : Description courte</li>
+        </ul>
+    </section>
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>Email : <a href="mailto:ton_email@aserandour.fr">ton_email@aserandour.fr</a></p>
+    </section>
+    <footer>
+        <p>&copy; 2024 [Ton Nom]. Tous droits réservés.</p>
+    </footer>
 </body>
 </html>
