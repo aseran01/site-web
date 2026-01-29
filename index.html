@@ -1,83 +1,192 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accueil - [Ton Nom]</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-        }
-        header, nav, section, footer {
-            padding: 20px;
-            margin: 10px auto;
-            max-width: 800px;
-        }
-        header {
-            background: #f4f4f4;
-            text-align: center;
-        }
-        nav {
-            display: flex;
-            justify-content: space-around;
-        }
-        nav a {
-            text-decoration: none;
-            color: #333;
-        }
-        section {
-            border-bottom: 1px solid #ddd;
-        }
-        footer {
-            text-align: center;
-            background: #f4f4f4;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Antoine Sérandour — Portfolio</title>
+  <meta name="description" content="Portfolio / CV — Antoine" />
+  <style>
+    :root{
+      --bg:#0b0d12; --card: rgba(255,255,255,.06); --card2: rgba(255,255,255,.10);
+      --text:#e7eaf0; --muted:#b4bccd; --line: rgba(255,255,255,.12);
+      --accent:#7c5cff;
+      --shadow: 0 18px 50px rgba(0,0,0,.45);
+      --radius: 18px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      background:
+        radial-gradient(900px 600px at 15% 10%, rgba(124,92,255,.20), transparent 60%),
+        radial-gradient(800px 500px at 90% 20%, rgba(0,215,255,.12), transparent 60%),
+        radial-gradient(900px 600px at 50% 95%, rgba(255,120,120,.08), transparent 60%),
+        var(--bg);
+      color:var(--text);
+    }
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:1040px; margin:0 auto; padding:28px 18px 70px}
+    .nav{
+      display:flex; justify-content:space-between; align-items:center;
+      position:sticky; top:0; z-index:10;
+      padding:14px 0;
+      backdrop-filter: blur(10px);
+    }
+    .brand{font-weight:700; letter-spacing:.2px}
+    .pillbar{display:flex; gap:10px; flex-wrap:wrap}
+    .pill{
+      padding:10px 12px; border:1px solid var(--line);
+      border-radius:999px; background:rgba(0,0,0,.18);
+      font-size:14px; color:var(--muted);
+      transition:transform .15s ease, background .15s ease;
+    }
+    .pill:hover{transform:translateY(-1px); background:rgba(255,255,255,.06)}
+    .hero{padding:46px 0 18px}
+    .kicker{color:var(--muted); font-size:14px; letter-spacing:.18em; text-transform:uppercase}
+    h1{margin:.45rem 0 1rem; font-size: clamp(34px, 5vw, 54px); line-height:1.04}
+    .sub{font-size: clamp(16px, 2.2vw, 20px); color:var(--muted); max-width:70ch}
+    .cta{display:flex; gap:12px; margin-top:18px; flex-wrap:wrap}
+    .btn{
+      padding:12px 14px; border-radius:12px; border:1px solid var(--line);
+      background:rgba(255,255,255,.05); box-shadow: var(--shadow);
+      display:inline-flex; gap:10px; align-items:center; font-weight:600;
+      transition:transform .15s ease, border-color .15s ease;
+    }
+    .btn:hover{transform:translateY(-1px); border-color: rgba(124,92,255,.55)}
+    .btn.primary{background: linear-gradient(135deg, rgba(124,92,255,.9), rgba(0,215,255,.35)); border-color:transparent}
+    .grid{display:grid; gap:14px}
+    @media(min-width:860px){ .grid.cols3{grid-template-columns: 1fr 1fr 1fr} .grid.cols2{grid-template-columns: 1.2fr .8fr} }
+    .card{
+      border:1px solid var(--line); background:var(--card); border-radius:var(--radius);
+      padding:16px; box-shadow: var(--shadow);
+    }
+    .card h3{margin:.2rem 0 .35rem}
+    .muted{color:var(--muted)}
+    .section{margin-top:22px}
+    .section h2{font-size:18px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin:0 0 10px}
+    .tags{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px}
+    .tag{font-size:12px; padding:7px 10px; border:1px solid var(--line); border-radius:999px; color:var(--muted); background:rgba(0,0,0,.18)}
+    .proj{
+      transition:transform .15s ease, background .15s ease, border-color .15s ease;
+      cursor:pointer;
+    }
+    .proj:hover{transform:translateY(-2px); background:var(--card2); border-color: rgba(124,92,255,.45)}
+    footer{margin-top:28px; color:var(--muted); font-size:13px}
+  </style>
 </head>
 <body>
-    <header>
-        <h1>[Ton Nom]</h1>
-        <p>Étudiant en Physique, Passionné par l'IA et la Recherche</p>
+  <div class="wrap">
+
+    <div class="nav">
+      <div class="brand">Antoine Sérandour</div>
+      <div class="pillbar">
+        <a class="pill" href="#projets">Projets</a>
+        <a class="pill" href="#parcours">Parcours</a>
+        <a class="pill" href="#ecrits">Bibliographie</a>
+        <a class="pill" href="#contact">Contact</a>
+      </div>
+    </div>
+
+    <header class="hero">
+      <div class="kicker"> Accueil Portfolio</div>
+      <h1> Antoine Sérandour</h1>
+      <p class="sub">
+        Bienvenue sur mon site ! J’y présente mes travaux, réflexions et productions autour de l’intelligence artificielle et du numérique, des mécanismes d’innovation, ainsi que des politiques publiques et de l’action de l’État. Ce site est pensé comme un espace de mise en valeur de mes projets et de mes analyses.
+      </p>
+      <div class="cta">
+        <a class="btn primary" href="Documents/CV_SERANDOUR.pdf">📄 Télécharger mon CV</a>
+        <a class="btn" href="#contact">✉️ Me contacter</a>
+        <!-- <a class="btn" href="https://github.com/" target="_blank" rel="noreferrer">↗ GitHub</a> -->
+        <a class="btn" href="https://www.linkedin.com/in/antoine-s%C3%A9randour-351b361b8/" target="_blank" rel="noreferrer">↗ LinkedIn</a>
+      </div>
     </header>
-    <nav>
-        <a href="#about">À propos</a>
-        <a href="#cv">CV</a>
-        <a href="#engagements">Engagements actuels</a>
-        <a href="#productions">Productions</a>
-        <a href="#contact">Contact</a>
-    </nav>
-    <section id="about">
-        <h2>À propos de moi</h2>
-        <p>Brève biographie avec ta photo.</p>
+
+    <section class="section">
+      <div class="grid cols2">
+        <div class="card">
+          <h2>En bref</h2>
+          <ul class="muted">
+            <li>Je transforme des sujets complexes en décisions actionnables.</li>
+            <li>Je sais naviguer entre recherche, administration et terrain.</li>
+            <li>Je produis vite des livrables propres (écrit, data, synthèse).</li>
+          </ul>
+          <div class="tags">
+            <span class="tag">IA & gouvernance</span>
+            <span class="tag">Sécurité numérique</span>
+            <span class="tag">Évaluation / politiques publiques</span>
+            <span class="tag">STS / sociologie des techniques</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Ce que je cherche</h2>
+          <p class="muted">
+            Un rôle où je peux <b>analyser</b>, <b>structurer</b> et <b>rendre utile</b> de la complexité technique :
+            innovation, régulation, stratégie, évaluation, risk / policy, interface public-privé.
+          </p>
+        </div>
+      </div>
     </section>
-    <section id="cv">
-        <h2>CV</h2>
-        <p><a href="ton_cv.pdf" target="_blank">Télécharger mon CV</a></p>
-        <p>Résumé de ton CV.</p>
+
+    <section id="projets" class="section">
+      <h2>Projets sélectionnés</h2>
+      <div class="grid cols3">
+        <a class="card proj" href="#" onclick="alert('Ajoute un lien vers ton projet !')">
+          <h3>Projet 1 — Titre impactant</h3>
+          <p class="muted">Problème → approche → résultat en 2 lignes.</p>
+          <div class="tags">
+            <span class="tag">Méthodo</span><span class="tag">Livrable</span><span class="tag">Impact</span>
+          </div>
+        </a>
+        <a class="card proj" href="#" onclick="alert('Ajoute un lien vers ton projet !')">
+          <h3>Projet 2 — Titre impactant</h3>
+          <p class="muted">Décris ce que TU as fait, et ce que ça a produit.</p>
+          <div class="tags">
+            <span class="tag">Tech</span><span class="tag">Policy</span><span class="tag">Écriture</span>
+          </div>
+        </a>
+        <a class="card proj" href="#" onclick="alert('Ajoute un lien vers ton projet !')">
+          <h3>Projet 3 — Titre impactant</h3>
+          <p class="muted">Un projet “wow” (même petit) mais ultra bien présenté.</p>
+          <div class="tags">
+            <span class="tag">Résultats</span><span class="tag">Timeline</span><span class="tag">Lien</span>
+          </div>
+        </a>
+      </div>
     </section>
-    <section id="engagements">
-        <h2>Engagements actuels</h2>
-        <ul>
-            <li>Projet A : Description courte</li>
-            <li>Projet B : Description courte</li>
-        </ul>
+
+    <section id="parcours" class="section">
+      <h2>Parcours</h2>
+      <div class="card">
+        <p class="muted">
+          2024–2025 — M2 (STS / socio des sciences) • Mémoire sur les promesses de l’informatique quantique<br/>
+          + expériences / assos / projets… (à condenser en 5 lignes max)
+        </p>
+      </div>
     </section>
-    <section id="productions">
-        <h2>Productions</h2>
-        <ul>
-            <li>Article/Rapport 1 : Description courte</li>
-            <li>Article/Rapport 2 : Description courte</li>
-        </ul>
+
+    <section id="ecrits" class="section">
+      <h2>Écrits / interventions</h2>
+      <div class="card">
+        <p class="muted">Ajoute 3 items max : titre + 1 ligne + lien (PDF, Medium, etc.).</p>
+      </div>
     </section>
-    <section id="contact">
-        <h2>Contact</h2>
-        <p>Email : <a href="mailto:ton_email@aserandour.fr">ton_email@aserandour.fr</a></p>
+
+    <section id="contact" class="section">
+      <h2>Contact</h2>
+      <div class="card">
+        <p class="muted">📩 email@exemple.com • Paris • dispo: …</p>
+      </div>
     </section>
+
     <footer>
-        <p>&copy; 2024 [Ton Nom]. Tous droits réservés.</p>
+      © <span id="y"></span> Antoine — construit avec GitHub Pages.
     </footer>
+
+  </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
 </body>
-</html>
+</html>py
