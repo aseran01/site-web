@@ -1,192 +1,529 @@
 <!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Antoine Sérandour — Portfolio</title>
-  <meta name="description" content="Portfolio / CV — Antoine" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Site personnel " />
+  <title>Antoine Sérandour</title>
+
   <style>
     :root{
-      --bg:#0b0d12; --card: rgba(255,255,255,.06); --card2: rgba(255,255,255,.10);
-      --text:#e7eaf0; --muted:#b4bccd; --line: rgba(255,255,255,.12);
-      --accent:#7c5cff;
-      --shadow: 0 18px 50px rgba(0,0,0,.45);
-      --radius: 18px;
+      --bg: #fafafa;
+      --ink: #141414;
+      --muted: #5c5c5c;
+      --line: #e7e7e7;
+
+      /* accents primaires (utilisation parcimonieuse) */
+      --blue:  #2f6feb;
+      --green: #2da44e;
+      --yellow:#d4a72c;
+      --red:   #d1242f;
+
+      --radius: 16px;
+      --shadow: 0 8px 24px rgba(0,0,0,.06);
+      --max: 980px;
     }
-    *{box-sizing:border-box}
-    html,body{height:100%}
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
     body{
-      margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
-      background:
-        radial-gradient(900px 600px at 15% 10%, rgba(124,92,255,.20), transparent 60%),
-        radial-gradient(800px 500px at 90% 20%, rgba(0,215,255,.12), transparent 60%),
-        radial-gradient(900px 600px at 50% 95%, rgba(255,120,120,.08), transparent 60%),
-        var(--bg);
-      color:var(--text);
+      margin:0;
+      background:var(--bg);
+      color:var(--ink);
+      line-height:1.55;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
     }
-    a{color:inherit; text-decoration:none}
-    .wrap{max-width:1040px; margin:0 auto; padding:28px 18px 70px}
-    .nav{
-      display:flex; justify-content:space-between; align-items:center;
-      position:sticky; top:0; z-index:10;
-      padding:14px 0;
-      backdrop-filter: blur(10px);
+
+    /* petite touche SHS : titres + nom en serif */
+    h1,h2,h3,.name{
+      font-family: ui-serif, "Georgia", "Times New Roman", Times, serif;
+      letter-spacing: .2px;
     }
-    .brand{font-weight:700; letter-spacing:.2px}
-    .pillbar{display:flex; gap:10px; flex-wrap:wrap}
-    .pill{
-      padding:10px 12px; border:1px solid var(--line);
-      border-radius:999px; background:rgba(0,0,0,.18);
-      font-size:14px; color:var(--muted);
-      transition:transform .15s ease, background .15s ease;
+
+    a{ color:inherit; text-decoration:none; }
+    a:hover{ text-decoration:underline; }
+
+    .container{
+      max-width:var(--max);
+      margin:0 auto;
+      padding: 40px 20px 28px;
     }
-    .pill:hover{transform:translateY(-1px); background:rgba(255,255,255,.06)}
-    .hero{padding:46px 0 18px}
-    .kicker{color:var(--muted); font-size:14px; letter-spacing:.18em; text-transform:uppercase}
-    h1{margin:.45rem 0 1rem; font-size: clamp(34px, 5vw, 54px); line-height:1.04}
-    .sub{font-size: clamp(16px, 2.2vw, 20px); color:var(--muted); max-width:70ch}
-    .cta{display:flex; gap:12px; margin-top:18px; flex-wrap:wrap}
+
+    /* HEADER */
+    header{
+      display:flex;
+      gap:20px;
+      align-items:flex-end;
+      justify-content:space-between;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .intro{
+      text-align: justify;
+      hyphens: auto;
+    }
+
+    .brand{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+      min-width: 260px;
+    }
+    .name{
+      font-size: clamp(28px, 3.5vw, 44px);
+      line-height:1.1;
+      margin:0;
+    }
+    .tagline{
+      margin:0;
+      color:var(--muted);
+      font-size: 14px;
+    }
+
+    nav{
+      display:flex;
+      gap:16px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+      align-items:center;
+      font-size: 14px;
+    }
+    .nav-item{
+      color: #8a8a8a;
+      padding: 6px 8px;
+      border-radius: 10px;
+      border: 1px solid transparent;
+      user-select:none;
+      cursor:not-allowed;
+      pointer-events:none; /* nav "présente mais désactivée" */
+      position:relative;
+    }
+    .nav-item::after{
+      content:"";
+      position:absolute;
+      left:8px;
+      right:8px;
+      bottom:4px;
+      height:2px;
+      opacity:.5;
+      background: linear-gradient(90deg, var(--blue), var(--green), var(--yellow), var(--red));
+      border-radius: 999px;
+    }
+
+    /* SECTIONS */
+    section{
+      padding: 34px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    section:last-of-type{ border-bottom:none; }
+
+    .section-title{
+      margin:0 0 16px 0;
+      font-size: 22px;
+      display:inline-block;
+      position:relative;
+      padding-bottom: 6px;
+    }
+    /* soulignement discret, coloré */
+    .section-title::after{
+      content:"";
+      position:absolute;
+      left:0;
+      bottom:0;
+      width: 70%;
+      height: 4px;
+      border-radius: 999px;
+      background: var(--blue);
+      opacity:.25;
+    }
+
+    /* HERO (présence) */
+    .hero{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 26px;
+      align-items:center;
+    }
+
+    .intro{
+      margin:0 0 14px 0;
+      font-size: 16px;
+    }
+
+    .chips{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px 10px;
+      margin: 12px 0 18px;
+      padding:0;
+      list-style:none;
+    }
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 6px 10px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #ffffff;
+      font-size: 13px;
+      color: #2f2f2f;
+    }
+    .dot{
+      width:10px;height:10px;border-radius:3px; /* mini “logo” */
+      background: var(--blue);
+      opacity:.95;
+      flex:0 0 auto;
+    }
+    .dot.green{ background: var(--green); }
+    .dot.yellow{ background: var(--yellow); }
+    .dot.red{ background: var(--red); }
+
+    .cta-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      align-items:center;
+      margin-top: 10px;
+    }
+
     .btn{
-      padding:12px 14px; border-radius:12px; border:1px solid var(--line);
-      background:rgba(255,255,255,.05); box-shadow: var(--shadow);
-      display:inline-flex; gap:10px; align-items:center; font-weight:600;
-      transition:transform .15s ease, border-color .15s ease;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 10px 14px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: white;
+      font-size: 14px;
+      text-decoration:none;
+      transition: transform .06s ease, box-shadow .12s ease;
     }
-    .btn:hover{transform:translateY(-1px); border-color: rgba(124,92,255,.55)}
-    .btn.primary{background: linear-gradient(135deg, rgba(124,92,255,.9), rgba(0,215,255,.35)); border-color:transparent}
-    .grid{display:grid; gap:14px}
-    @media(min-width:860px){ .grid.cols3{grid-template-columns: 1fr 1fr 1fr} .grid.cols2{grid-template-columns: 1.2fr .8fr} }
+    .btn:hover{
+      text-decoration:none;
+      box-shadow: var(--shadow);
+      transform: translateY(-1px);
+    }
+    .btn-primary{
+      border-color: transparent;
+      background: var(--blue);
+      color: #fff;
+    }
+    .btn-ghost{
+      color: #2f2f2f;
+      background: transparent;
+    }
+
+    .photo{
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: #fff;
+      overflow:hidden;
+      box-shadow: var(--shadow);
+      aspect-ratio: 4 / 5;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      position:relative;
+    }
+    .photo img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+    .photo .placeholder{
+      color:#8a8a8a;
+      font-size: 13px;
+      padding: 16px;
+      text-align:center;
+    }
+    /* petit accent discret sur la photo */
+    .photo::after{
+      content:"";
+      position:absolute;
+      top:12px;
+      left:12px;
+      width:12px;height:12px;
+      border-radius:4px;
+      background: var(--red);
+      opacity:.75;
+    }
+
+    /* 3 BOX */
+    .cards{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
     .card{
-      border:1px solid var(--line); background:var(--card); border-radius:var(--radius);
-      padding:16px; box-shadow: var(--shadow);
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 16px 16px 14px;
+      box-shadow: 0 10px 24px rgba(0,0,0,.04);
+      position:relative;
+      min-height: 150px;
     }
-    .card h3{margin:.2rem 0 .35rem}
-    .muted{color:var(--muted)}
-    .section{margin-top:22px}
-    .section h2{font-size:18px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin:0 0 10px}
-    .tags{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px}
-    .tag{font-size:12px; padding:7px 10px; border:1px solid var(--line); border-radius:999px; color:var(--muted); background:rgba(0,0,0,.18)}
-    .proj{
-      transition:transform .15s ease, background .15s ease, border-color .15s ease;
-      cursor:pointer;
+    .card h3{
+      margin: 0 0 8px 0;
+      font-size: 18px;
     }
-    .proj:hover{transform:translateY(-2px); background:var(--card2); border-color: rgba(124,92,255,.45)}
-    footer{margin-top:28px; color:var(--muted); font-size:13px}
+    .card p{
+      margin:0;
+      color:#303030;
+      font-size: 14px;
+    }
+    .card .accent{
+      position:absolute;
+      top:14px;
+      right:14px;
+      width:12px;height:12px;
+      border-radius:4px;
+      background: var(--blue);
+      opacity:.9;
+    }
+    .card.green .accent{ background: var(--green); }
+    .card.yellow .accent{ background: var(--yellow); }
+    .card.red .accent{ background: var(--red); }
+
+    /* DOCUMENTS */
+    .docs{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .doc{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:14px;
+      padding: 12px 14px;
+      border:1px solid var(--line);
+      border-radius: 14px;
+      background:#fff;
+    }
+    .doc .left{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      min-width:0;
+    }
+    .badge{
+      font-size: 12px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      color:#3b3b3b;
+      background: #fff;
+      flex:0 0 auto;
+    }
+    .doc-title{
+      font-size: 14px;
+      color:#1f1f1f;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+    .doc a.btn{
+      flex:0 0 auto;
+      padding: 8px 10px;
+      border-radius: 12px;
+    }
+
+    /* CONTACT discret */
+    .contact-line{
+      display:flex;
+      flex-wrap:wrap;
+      gap: 14px 18px;
+      align-items:center;
+      padding: 14px 0 0;
+      color:#2a2a2a;
+    }
+    .contact-line strong{ font-weight:600; }
+    .contact-link{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 8px 10px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background:#fff;
+    }
+    .contact-link:hover{ text-decoration:none; box-shadow: var(--shadow); }
+
+    footer{
+      padding: 26px 0 0;
+      color:#8a8a8a;
+      font-size: 13px;
+      display:flex;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 860px){
+      header{ align-items:flex-start; flex-direction:column; }
+      nav{ justify-content:flex-start; }
+      .hero{ grid-template-columns: 1fr; }
+      .photo{ max-width: 360px; }
+      .cards{ grid-template-columns: 1fr; }
+    }
   </style>
 </head>
+
 <body>
-  <div class="wrap">
-
-    <div class="nav">
-      <div class="brand">Antoine Sérandour</div>
-      <div class="pillbar">
-        <a class="pill" href="#projets">Projets</a>
-        <a class="pill" href="#parcours">Parcours</a>
-        <a class="pill" href="#ecrits">Bibliographie</a>
-        <a class="pill" href="#contact">Contact</a>
+  <div class="container">
+    <!-- HEADER -->
+    <header>
+      <div class="brand">
+        <h1 class="name">Antoine Sérandour</h1>
+        <p class="tagline">Sciences sociales • physique • numérique • innovation</p>
       </div>
-    </div>
 
-    <header class="hero">
-      <div class="kicker"> Accueil Portfolio</div>
-      <h1> Antoine Sérandour</h1>
-      <p class="sub">
-        Bienvenue sur mon site ! J’y présente mes travaux, réflexions et productions autour de l’intelligence artificielle et du numérique, des mécanismes d’innovation, ainsi que des politiques publiques et de l’action de l’État. Ce site est pensé comme un espace de mise en valeur de mes projets et de mes analyses.
-      </p>
-      <div class="cta">
-        <a class="btn primary" href="Documents/CV_SERANDOUR.pdf">📄 Télécharger mon CV</a>
-        <a class="btn" href="#contact">✉️ Me contacter</a>
-        <!-- <a class="btn" href="https://github.com/" target="_blank" rel="noreferrer">↗ GitHub</a> -->
-        <a class="btn" href="https://www.linkedin.com/in/antoine-s%C3%A9randour-351b361b8/" target="_blank" rel="noreferrer">↗ LinkedIn</a>
-      </div>
+      <!-- nav visible mais désactivée -->
+      <nav aria-label="Navigation (désactivée)">
+        <span class="nav-item" aria-disabled="true">Accueil</span>
+        <span class="nav-item" aria-disabled="true">Parcours</span>
+        <span class="nav-item" aria-disabled="true">Travaux</span>
+        <span class="nav-item" aria-disabled="true">Bibliographie</span>
+      </nav>
     </header>
 
-    <section class="section">
-      <div class="grid cols2">
-        <div class="card">
-          <h2>En bref</h2>
-          <ul class="muted">
-            <li>Je transforme des sujets complexes en décisions actionnables.</li>
-            <li>Je sais naviguer entre recherche, administration et terrain.</li>
-            <li>Je produis vite des livrables propres (écrit, data, synthèse).</li>
-          </ul>
-          <div class="tags">
-            <span class="tag">IA & gouvernance</span>
-            <span class="tag">Sécurité numérique</span>
-            <span class="tag">Évaluation / politiques publiques</span>
-            <span class="tag">STS / sociologie des techniques</span>
-          </div>
-        </div>
+    <!-- SECTION: PRÉSENCE -->
+    <section id="accueil">
+      <h2 class="section-title">Présentation</h2>
 
-        <div class="card">
-          <h2>Ce que je cherche</h2>
-          <p class="muted">
-            Un rôle où je peux <b>analyser</b>, <b>structurer</b> et <b>rendre utile</b> de la complexité technique :
-            innovation, régulation, stratégie, évaluation, risk / policy, interface public-privé.
+      <div class="hero">
+        <div>
+          <p class="intro">
+            Issu d’une formation scientifique, que j’ai progressivement complétée par des apports en sciences sociales, je m’intéresse aux dynamiques d’innovation et à la manière dont elles sont organisées, pilotées et encadrées. Mes centres d’intérêt portent en particulier sur les mécanismes institutionnels de l’innovation, le rôle de l’État, ainsi que sur certains secteurs technologiques spécifiques, notamment le numérique. Je m’intéresse plus largement aux technologies dites transformatives, comme l’intelligence artificielle, et à la façon dont elles transforment les modes d’action publique. Mes travaux et réflexions s’inscrivent à l’intersection de l’analyse des politiques publiques, de l’étude de l’action administrative et de l’évaluation des dispositifs publics. L’évaluation des politiques publiques constitue pour moi un prisme central pour caractériser l’action de l’État, comprendre ses arbitrages et analyser concrètement la mise en œuvre des politiques scientifiques, technologiques et industrielles.
+            <br>
+            Actuellement en recherche d’emploi, je m’oriente vers des postes relevant du secteur public ou de l’appui à l’administration, en particulier dans les domaines des politiques scientifiques et techno-industrielles. 
+            <br>
+            Ce site a vocation à présenter mon parcours, ainsi qu’un ensemble de références, de documents et de productions, sans logique d’actualité ou de publication régulière.
           </p>
+
+          <ul class="chips" aria-label="Mots-clés">
+            <li class="chip"><span class="dot"></span> Sociologie des sciences</li>
+            <li class="chip"><span class="dot green"></span> Innovation</li>
+            <li class="chip"><span class="dot yellow"></span> Evaluation des politiques publiques</li>
+            <li class="chip"><span class="dot red"></span> Industrie </li>
+            <li class="chip"><span class="dot"></span> IA et numérique </li>
+          </ul>
+
+          <div class="cta-row">
+            <!-- Remplacez href par votre vrai fichier -->
+            <a class="btn btn-primary" href="Docuemnts/CV_SERANDOUR.pdf" download>Télécharger mon CV</a>
+
+            <!-- Remplacez les valeurs -->
+            <a class="btn btn-ghost" href="mailto:antoine.serandour@ens-lyon.fr">Email</a>
+            <a class="btn btn-ghost" href="https://www.linkedin.com/in/antoine-s%C3%A9randour-351b361b8/" target="_blank" rel="noreferrer">LinkedIn</a>
+          </div>
+        </div>
+
+        <div class="photo" aria-label="Photo">
+          <!-- Option A: mettez votre photo -->
+          <!-- <img src="assets/photo.jpg" alt="Photo de Votre Nom" /> -->
+
+          <!-- Option B: placeholder (laissez si vous n'avez pas de photo) -->
+          <div class="placeholder">
+            Place photo (optionnel).<br/>
+            Vous pouvez laisser vide : ça restera sobre.
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="projets" class="section">
-      <h2>Projets sélectionnés</h2>
-      <div class="grid cols3">
-        <a class="card proj" href="#" onclick="alert('Ajoute un lien vers ton projet !')">
-          <h3>Projet 1 — Titre impactant</h3>
-          <p class="muted">Problème → approche → résultat en 2 lignes.</p>
-          <div class="tags">
-            <span class="tag">Méthodo</span><span class="tag">Livrable</span><span class="tag">Impact</span>
+    <!-- SECTION: 3 PÔLES -->
+    <section id="poles">
+      <h2 class="section-title">Axes</h2>
+
+      <div class="cards">
+        <article class="card blue">
+          <span class="accent" aria-hidden="true"></span>
+          <h3>Formation technique</h3>
+          <p>
+            3–4 lignes factuelles : disciplines, méthodes, terrains, outils (si utile).
+          </p>
+        </article>
+
+        <article class="card green">
+          <span class="accent" aria-hidden="true"></span>
+          <h3>Questionnements</h3>
+          <p>
+            Thèmes SHS : promesses technoscientifiques, institutions, politiques publiques, etc.
+          </p>
+        </article>
+
+        <article class="card yellow">
+          <span class="accent" aria-hidden="true"></span>
+          <h3>EffiSciences</h3>
+          <p>
+            Rôle + une phrase sobre sur l’association (sans narration). Lien éventuel.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- SECTION: TRACES / DOCUMENTS (OPTIONNELLE MAIS COHÉRENTE) -->
+    <section id="documents">
+      <h2 class="section-title">Documents</h2>
+
+      <div class="docs" role="list">
+        <div class="doc" role="listitem">
+          <div class="left">
+            <span class="badge">PDF</span>
+            <span class="doc-title">Rapport — Titre du document (année)</span>
           </div>
-        </a>
-        <a class="card proj" href="#" onclick="alert('Ajoute un lien vers ton projet !')">
-          <h3>Projet 2 — Titre impactant</h3>
-          <p class="muted">Décris ce que TU as fait, et ce que ça a produit.</p>
-          <div class="tags">
-            <span class="tag">Tech</span><span class="tag">Policy</span><span class="tag">Écriture</span>
+          <a class="btn" href="assets/rapport.pdf" download>Télécharger</a>
+        </div>
+
+        <div class="doc" role="listitem">
+          <div class="left">
+            <span class="badge">Note</span>
+            <span class="doc-title">Note de lecture — Référence (année)</span>
           </div>
-        </a>
-        <a class="card proj" href="#" onclick="alert('Ajoute un lien vers ton projet !')">
-          <h3>Projet 3 — Titre impactant</h3>
-          <p class="muted">Un projet “wow” (même petit) mais ultra bien présenté.</p>
-          <div class="tags">
-            <span class="tag">Résultats</span><span class="tag">Timeline</span><span class="tag">Lien</span>
+          <a class="btn" href="assets/note.pdf" download>Télécharger</a>
+        </div>
+
+        <div class="doc" role="listitem">
+          <div class="left">
+            <span class="badge">Texte</span>
+            <span class="doc-title">Texte court — Titre (année)</span>
           </div>
+          <a class="btn" href="assets/texte.pdf" download>Télécharger</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT (DISCRET, PAS "SECTION CONTACT") -->
+    <section id="contact">
+      <h2 class="section-title">Contact</h2>
+
+      <div class="contact-line">
+        <strong>Me contacter :</strong>
+        <a class="contact-link" href="mailto:prenom.nom@email.com">
+          <span class="dot green" aria-hidden="true"></span> prenom.nom@email.com
+        </a>
+        <a class="contact-link" href="https://www.linkedin.com/in/votre-profil" target="_blank" rel="noreferrer">
+          <span class="dot blue" aria-hidden="true"></span> LinkedIn
         </a>
       </div>
+
+      <footer>
+        <span>© <span id="year"></span> Votre Nom</span>
+        <span>Une page — sobre, stable, sans obligation</span>
+      </footer>
     </section>
-
-    <section id="parcours" class="section">
-      <h2>Parcours</h2>
-      <div class="card">
-        <p class="muted">
-          2024–2025 — M2 (STS / socio des sciences) • Mémoire sur les promesses de l’informatique quantique<br/>
-          + expériences / assos / projets… (à condenser en 5 lignes max)
-        </p>
-      </div>
-    </section>
-
-    <section id="ecrits" class="section">
-      <h2>Écrits / interventions</h2>
-      <div class="card">
-        <p class="muted">Ajoute 3 items max : titre + 1 ligne + lien (PDF, Medium, etc.).</p>
-      </div>
-    </section>
-
-    <section id="contact" class="section">
-      <h2>Contact</h2>
-      <div class="card">
-        <p class="muted">📩 email@exemple.com • Paris • dispo: …</p>
-      </div>
-    </section>
-
-    <footer>
-      © <span id="y"></span> Antoine — construit avec GitHub Pages.
-    </footer>
-
   </div>
 
   <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
+    // année automatique dans le footer
+    document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
-</html>py
+</html>
