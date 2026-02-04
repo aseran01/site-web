@@ -141,9 +141,9 @@
     /* HERO (présence) */
     .hero{
       display:grid;
-      grid-template-columns: 1.2fr .8fr;
+      grid-template-columns: 1.5fr .5fr;
       gap: 26px;
-      align-items:center;
+      align-items:start;
     }
 
     .intro{
@@ -239,16 +239,12 @@
       padding: 16px;
       text-align:center;
     }
-    /* petit accent discret sur la photo */
-    .photo::after{
-      content:"";
-      position:absolute;
-      top:12px;
-      left:12px;
-      width:12px;height:12px;
-      border-radius:4px;
-      background: var(--red);
-      opacity:.75;
+    
+    .methods{
+      margin: 0.6em 0 0;
+      padding-left: 1.1em;
+      font-size: 14px;
+      color: #2f2f2f;
     }
 
     /* 3 BOX */
@@ -265,6 +261,9 @@
       box-shadow: 0 10px 24px rgba(0,0,0,.04);
       position:relative;
       min-height: 150px;
+      font-family: inherit;
+      text-align: justify;
+    hyphens: auto;
     }
     .card h3{
       margin: 0 0 8px 0;
@@ -400,24 +399,28 @@
       <div class="hero">
         <div>
           <p class="intro">
-            Issu d’une formation scientifique, que j’ai progressivement complétée par des apports en sciences sociales, je m’intéresse aux dynamiques d’innovation et à la manière dont elles sont organisées, pilotées et encadrées. Mes centres d’intérêt portent en particulier sur les mécanismes institutionnels de l’innovation, le rôle de l’État, ainsi que sur certains secteurs technologiques spécifiques, notamment le numérique. Je m’intéresse plus largement aux technologies dites transformatives, comme l’intelligence artificielle, et à la façon dont elles transforment les modes d’action publique. Mes travaux et réflexions s’inscrivent à l’intersection de l’analyse des politiques publiques, de l’étude de l’action administrative et de l’évaluation des dispositifs publics. L’évaluation des politiques publiques constitue pour moi un prisme central pour caractériser l’action de l’État, comprendre ses arbitrages et analyser concrètement la mise en œuvre des politiques scientifiques, technologiques et industrielles.
-            <br>
-            Actuellement en recherche d’emploi, je m’oriente vers des postes relevant du secteur public ou de l’appui à l’administration, en particulier dans les domaines des politiques scientifiques et techno-industrielles. 
-            <br>
-            Ce site a vocation à présenter mon parcours, ainsi qu’un ensemble de références, de documents et de productions, sans logique d’actualité ou de publication régulière.
+            Issu d’une formation scientifique, que j’ai progressivement complétée par des apports en sciences sociales, je m’intéresse aux dynamiques d’innovation et à la manière dont elles sont organisées, pilotées et encadrées par l'Etat. Mes centres d’intérêt portent en particulier sur certains secteurs technologiques spécifiques comme le numérique ou l'énergie. Je m’intéresse plus largement aux technologies dites transformatives, comme l’intelligence artificielle, et à la façon dont elles transforment les modes d’action publique comme les sociétés. Mes réflexions s'appuient sur l’analyse des politiques publiques, la sociologie de l'Etat et de l'innovation, l'histoire des sciences et l'ingénierie industrielle.
           </p>
+          <p class="intro">
+            Actuellement en recherche d’emploi, je m’oriente vers des postes relevant du secteur public ou de l’appui à l’administration, en particulier dans les domaines des politiques scientifiques et techno-industrielles. 
+          </p>
+          <p class="intro">
+            Ce site a vocation à présenter mon parcours, ainsi qu’un ensemble de références, de documents et de productions, sans logique d’actualité ou de publication régulière.          </p>
+
 
           <ul class="chips" aria-label="Mots-clés">
-            <li class="chip"><span class="dot"></span> Sociologie des sciences</li>
-            <li class="chip"><span class="dot green"></span> Innovation</li>
-            <li class="chip"><span class="dot yellow"></span> Evaluation des politiques publiques</li>
-            <li class="chip"><span class="dot red"></span> Industrie </li>
+            <li class="chip"><span class="dot"></span> Industrie </li>
             <li class="chip"><span class="dot"></span> IA et numérique </li>
+            <li class="chip"><span class="dot green"></span> Innovation</li>
+            <li class="chip"><span class="dot green"></span> Action publique</li>
+            <li class="chip"><span class="dot red"></span> Sociologie des sciences</li>
+            <li class="chip"><span class="dot red"></span> Evaluation des politiques publiques</li>
+
           </ul>
 
           <div class="cta-row">
             <!-- Remplacez href par votre vrai fichier -->
-            <a class="btn btn-primary" href="Docuemnts/CV_SERANDOUR.pdf" download>Télécharger mon CV</a>
+            <a class="btn btn-primary" href="Documents/CV_SERANDOUR.pdf" download>Télécharger mon CV</a>
 
             <!-- Remplacez les valeurs -->
             <a class="btn btn-ghost" href="mailto:antoine.serandour@ens-lyon.fr">Email</a>
@@ -426,14 +429,7 @@
         </div>
 
         <div class="photo" aria-label="Photo">
-          <!-- Option A: mettez votre photo -->
-          <!-- <img src="assets/photo.jpg" alt="Photo de Votre Nom" /> -->
-
-          <!-- Option B: placeholder (laissez si vous n'avez pas de photo) -->
-          <div class="placeholder">
-            Place photo (optionnel).<br/>
-            Vous pouvez laisser vide : ça restera sobre.
-          </div>
+          <img src="Documents/photo_id.jpg" alt="Photo Antoine Sérandour" />
         </div>
       </div>
     </section>
@@ -447,24 +443,43 @@
           <span class="accent" aria-hidden="true"></span>
           <h3>Formation technique</h3>
           <p>
-            3–4 lignes factuelles : disciplines, méthodes, terrains, outils (si utile).
+          Formation initiale en physique, avec un socle généraliste couvrant des champs variés (optique, théorie des champs, matière active, biophysique), et une spécialisation en physique statistique et en modélisation numérique.
           </p>
+
+          <ul class="methods">
+            <li>Modélisation et simulation numériques sur Python</li>
+            <li>Machine Learning (apprentissage supervisé, NLP) sur Pandas et PyTorch</li>
+            <li>Développement d’interfaces connectées à des bases de données SQL</li>
+          </ul>
         </article>
 
         <article class="card green">
           <span class="accent" aria-hidden="true"></span>
-          <h3>Questionnements</h3>
+          <h3>Sociologie de l’innovation</h3>
           <p>
-            Thèmes SHS : promesses technoscientifiques, institutions, politiques publiques, etc.
+            Formé à la sociologie de l’innovation aux Mines et à l’EHESS, je me suis familiarisé avec les mécanismes de l’innovation en France, en particulier dans des secteurs fortement structurés par l’action publique comme l’aménagement du territoire (énergie, eau), le numérique (intelligence artificielle, centres de calcul et données) et la décarbonation de l’industrie.
           </p>
+
+          <ul class="methods">
+            <li>Analyse de controverses technoscientifiques</li>
+            <li>Histoire des sciences et socio-histoire (travail d’archives)</li>
+            <li>Enquêtes qualitatives : observations et entretiens semi-directifs</li>
+          </ul>
         </article>
 
         <article class="card yellow">
           <span class="accent" aria-hidden="true"></span>
           <h3>EffiSciences</h3>
           <p>
-            Rôle + une phrase sobre sur l’association (sans narration). Lien éventuel.
+            Engagé au sein d’EffiSciences depuis les débuts de l’association, j’ai contribué à sa structuration administrative et stratégique, ainsi qu’à la conduite de ses activités opérationnelles. Mon implication a notamment porté sur des actions de sensibilisation et de réflexion autour des risques biotechnologiques, de l'IA et des enjeux liés aux impacts de la recherche en France.
           </p>
+
+          <ul class="methods">
+            <li>Rédaction d’un rapport sur le fonctionnement de la recherche, incluant des recommandations</li>
+            <li>Réalsation de demandes de financements français, européens et philanthropiques</li>
+            <li>Organisation et animation de camps de formation et de séminaires de recherche </li>
+          </ul>
+
         </article>
       </div>
     </section>
@@ -477,26 +492,19 @@
         <div class="doc" role="listitem">
           <div class="left">
             <span class="badge">PDF</span>
-            <span class="doc-title">Rapport — Titre du document (année)</span>
+            <span class="doc-title">Mémoire — Les promesses de l'ordinateur quantique (2025)</span>
           </div>
-          <a class="btn" href="assets/rapport.pdf" download>Télécharger</a>
+          <a class="btn" href="Documents/Mémoire_Les_promesses_de_l_ordinateur_quantique_SERANDOUR.pdf" download>Télécharger</a>
         </div>
 
         <div class="doc" role="listitem">
           <div class="left">
-            <span class="badge">Note</span>
-            <span class="doc-title">Note de lecture — Référence (année)</span>
+            <span class="badge">PDF</span>
+            <span class="doc-title">Rapport — Soutenir la Recherche Impliquée en France (2025)</span>
           </div>
-          <a class="btn" href="assets/note.pdf" download>Télécharger</a>
+          <a class="btn" href="Documents/effisciences_rapport_complet.pdf" download>Télécharger</a>
         </div>
 
-        <div class="doc" role="listitem">
-          <div class="left">
-            <span class="badge">Texte</span>
-            <span class="doc-title">Texte court — Titre (année)</span>
-          </div>
-          <a class="btn" href="assets/texte.pdf" download>Télécharger</a>
-        </div>
       </div>
     </section>
 
@@ -506,17 +514,17 @@
 
       <div class="contact-line">
         <strong>Me contacter :</strong>
-        <a class="contact-link" href="mailto:prenom.nom@email.com">
-          <span class="dot green" aria-hidden="true"></span> prenom.nom@email.com
+        <a class="contact-link" href="mailto:antoine.serandour@ens-lyon.fr">
+          antoine.serandour@ens-lyon.fr
         </a>
-        <a class="contact-link" href="https://www.linkedin.com/in/votre-profil" target="_blank" rel="noreferrer">
-          <span class="dot blue" aria-hidden="true"></span> LinkedIn
+        <a class="contact-link" href="https://www.linkedin.com/in/antoine-s%C3%A9randour-351b361b8/" target="_blank" rel="noreferrer">
+          LinkedIn
         </a>
       </div>
 
       <footer>
-        <span>© <span id="year"></span> Votre Nom</span>
-        <span>Une page — sobre, stable, sans obligation</span>
+        <span>© <span id="year"></span> Antoine Sérandour</span>
+        <span></span>
       </footer>
     </section>
   </div>
