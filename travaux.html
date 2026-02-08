@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Travaux — documents et productions." />
+  <title>Votre Nom — Travaux</title>
+
+  <style>
+    :root{
+      --bg: #fafafa;
+      --ink: #141414;
+      --muted: #5c5c5c;
+      --line: #e7e7e7;
+
+      --blue:  #2f6feb;
+      --green: #2da44e;
+      --yellow:#d4a72c;
+      --red:   #d1242f;
+
+      --radius: 16px;
+      --shadow: 0 8px 24px rgba(0,0,0,.06);
+      --max: 980px;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--ink);
+      line-height:1.55;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial;
+    }
+    h1,h2,h3,.name{
+      font-family: ui-serif, "Georgia", "Times New Roman", Times, serif;
+      letter-spacing: .2px;
+    }
+    a{ color:inherit; text-decoration:none; }
+    a:hover{ text-decoration:underline; }
+
+    .container{
+      max-width:var(--max);
+      margin:0 auto;
+      padding: 40px 20px 28px;
+    }
+
+    /* HEADER */
+    header{
+      display:flex;
+      gap:20px;
+      align-items:flex-end;
+      justify-content:space-between;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--line);
+    }
+    .brand{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+      min-width: 260px;
+    }
+    .name{
+      font-size: clamp(28px, 3.5vw, 44px);
+      line-height:1.1;
+      margin:0;
+    }
+    .tagline{
+      margin:0;
+      color:var(--muted);
+      font-size: 14px;
+    }
+
+    nav{
+      display:flex;
+      gap:16px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+      align-items:center;
+      font-size: 14px;
+    }
+
+    /* Onglets actifs (sur les vraies pages) */
+    .nav-link{
+      padding: 6px 10px;
+      border-radius: 10px;
+      border: 1px solid transparent;
+      color:#6f6f6f;
+    }
+    .nav-link:hover{
+      text-decoration:none;
+      border-color: var(--line);
+      background:#fff;
+      box-shadow: 0 6px 18px rgba(0,0,0,.05);
+    }
+    .nav-link.active{
+      color:#1f1f1f;
+      border-color: var(--line);
+      background:#fff;
+      position:relative;
+    }
+    .nav-link.active::after{
+      content:"";
+      position:absolute;
+      left:10px;
+      right:10px;
+      bottom:4px;
+      height:3px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--blue), var(--green), var(--yellow), var(--red));
+      opacity:.35;
+    }
+
+    /* SECTIONS */
+    section{
+      padding: 34px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    section:last-of-type{ border-bottom:none; }
+
+    .page-title{
+      margin: 22px 0 6px;
+      font-size: 28px;
+    }
+    .page-sub{
+      margin:0 0 18px;
+      color: var(--muted);
+      max-width: 70ch;
+    }
+
+    /* DOCS (même template que l’accueil) */
+    .docs{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .doc{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:14px;
+      padding: 12px 14px;
+      border:1px solid var(--line);
+      border-radius: 14px;
+      background:#fff;
+      transition: transform .10s ease, box-shadow .12s ease;
+    }
+    .doc:hover{
+      transform: translateY(-1px);
+      box-shadow: var(--shadow);
+    }
+    .doc .left{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      min-width:0;
+    }
+    .badge{
+      font-size: 12px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      color:#3b3b3b;
+      background: #fff;
+      flex:0 0 auto;
+    }
+    .doc-title{
+      font-size: 14px;
+      color:#1f1f1f;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 8px 10px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: white;
+      font-size: 14px;
+      text-decoration:none;
+      transition: transform .06s ease, box-shadow .12s ease;
+      flex:0 0 auto;
+    }
+    .btn:hover{
+      text-decoration:none;
+      box-shadow: var(--shadow);
+      transform: translateY(-1px);
+    }
+
+    /* SECTIONS REPLIABLES */
+    details{
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background:#fff;
+      padding: 12px 14px;
+      box-shadow: 0 10px 24px rgba(0,0,0,.03);
+      margin: 12px 0;
+    }
+    summary{
+      cursor:pointer;
+      list-style:none;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 14px;
+      user-select:none;
+    }
+    summary::-webkit-details-marker{ display:none; }
+
+    .summary-left{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      min-width: 0;
+    }
+    .pill{
+      width:10px;height:10px;border-radius:3px;
+      background: var(--blue);
+      opacity:.9;
+      flex:0 0 auto;
+    }
+    .pill.green{ background: var(--green); }
+    .pill.yellow{ background: var(--yellow); }
+    .pill.red{ background: var(--red); }
+
+    .summary-title{
+      margin:0;
+      font-size: 18px;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+    .summary-meta{
+      color: var(--muted);
+      font-size: 13px;
+      white-space:nowrap;
+      flex:0 0 auto;
+    }
+    .details-body{
+      padding-top: 10px;
+    }
+    .details-desc{
+      margin: 6px 0 10px;
+      color: var(--muted);
+      max-width: 80ch;
+      text-align: justify;
+      hyphens: auto;
+      font-size: 14px;
+    }
+
+    /* TOOLTIP qui suit la souris */
+    .tooltip{
+      position: fixed;
+      top: 0;
+      left: 0;
+      transform: translate(12px, 12px);
+      background: rgba(20,20,20,.92);
+      color: #fff;
+      padding: 8px 10px;
+      border-radius: 10px;
+      font-size: 12px;
+      max-width: 260px;
+      line-height: 1.35;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0;
+      transition: opacity .08s ease;
+    }
+    .tooltip.visible{ opacity: 1; }
+
+    footer{
+      padding: 26px 0 0;
+      color:#8a8a8a;
+      font-size: 13px;
+      display:flex;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+
+    @media (max-width: 860px){
+      header{ align-items:flex-start; flex-direction:column; }
+      nav{ justify-content:flex-start; }
+      .doc{ align-items:flex-start; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <h1 class="name">Antoine Sérandour</h1>
+        <p class="tagline">Sciences sociales • Physique • Numérique • Innovation</p>
+      </div>
+
+      <nav aria-label="Navigation">
+        <a class="nav-link" href="index.html">Accueil</a>
+        <a class="nav-link" href="parcours.html">Parcours</a>
+        <a class="nav-link active" href="travaux.html">Travaux</a>
+        <a class="nav-link" href="bibliographie.html">Bibliographie</a>
+      </nav>
+    </header>
+
+    <section>
+      <h2 class="page-title">Travaux</h2>
+      <p class="page-sub">
+        Cette page référence l'ensemble de mes productions au cours de mes formations et de mes expériences professionnelles.
+      </p>
+
+      <!-- SECTION 1 -->
+      <details open>
+        <summary>
+          <div class="summary-left">
+            <span class="pill blue" aria-hidden="true"></span>
+            <h3 class="summary-title">Rapports de stage et rendus de physique</h3>
+          </div>
+          <span class="summary-meta">3 documents</span>
+        </summary>
+
+        <div class="details-body">
+          <p class="details-desc">
+            Ensemble des documents que j'ai produits lors de ma formation de physique à l'ENS de Lyon.
+          </p>
+
+          <div class="docs">
+            <div class="doc" data-tooltip="Rapport (PDF). Contexte, méthode, recommandations. 25–30 pages.">
+              <div class="left">
+                <span class="badge">PDF</span>
+                <span class="doc-title">Rapport — Titre du document (année)</span>
+              </div>
+              <a class="btn" href="assets/rapport.pdf" download>Télécharger</a>
+            </div>
+
+            <div class="doc" data-tooltip="Note courte. 2–4 pages. Points clés + pistes de lecture.">
+              <div class="left">
+                <span class="badge">Note</span>
+                <span class="doc-title">Note — Titre (année)</span>
+              </div>
+              <a class="btn" href="assets/note.pdf" download>Télécharger</a>
+            </div>
+
+            <div class="doc" data-tooltip="Synthèse structurée. Bibliographie + concepts + questions.">
+              <div class="left">
+                <span class="badge">PDF</span>
+                <span class="doc-title">Synthèse — Titre (année)</span>
+              </div>
+              <a class="btn" href="assets/synthese.pdf" download>Télécharger</a>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <!-- SECTION 2 -->
+      <details>
+        <summary>
+          <div class="summary-left">
+            <span class="pill green" aria-hidden="true"></span>
+            <h3 class="summary-title">Mémoire & recherche</h3>
+          </div>
+          <span class="summary-meta">2 documents</span>
+        </summary>
+
+        <div class="details-body">
+          <p class="details-desc">
+            Productions académiques (mémoire, chapitres, extraits). Possibilité d’ajouter un lien vers un dépôt ou une annexe.
+          </p>
+
+          <div class="docs">
+            <div class="doc" data-tooltip="Mémoire complet (PDF). Terrain, cadre théorique, analyse.">
+              <div class="left">
+                <span class="badge">PDF</span>
+                <span class="doc-title">Mémoire — Titre (année)</span>
+              </div>
+              <a class="btn" href="assets/memoire.pdf" download>Télécharger</a>
+            </div>
+
+            <div class="doc" data-tooltip="Extrait ciblé (PDF). Une partie lisible rapidement.">
+              <div class="left">
+                <span class="badge">Extrait</span>
+                <span class="doc-title">Extrait — Chapitre / section (année)</span>
+              </div>
+              <a class="btn" href="assets/extrait.pdf" download>Télécharger</a>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <!-- SECTION 3 -->
+      <details>
+        <summary>
+          <div class="summary-left">
+            <span class="pill yellow" aria-hidden="true"></span>
+            <h3 class="summary-title">Supports & interventions</h3>
+          </div>
+          <span class="summary-meta">1 document</span>
+        </summary>
+
+        <div class="details-body">
+          <p class="details-desc">
+            Slides, supports de présentation, interventions publiques, ateliers. (Tu peux aussi mettre des liens externes.)
+          </p>
+
+          <div class="docs">
+            <div class="doc" data-tooltip="Slides / support. 10–20 min. Public non spécialiste.">
+              <div class="left">
+                <span class="badge">Slides</span>
+                <span class="doc-title">Présentation — Titre (année)</span>
+              </div>
+              <a class="btn" href="assets/slides.pdf" download>Télécharger</a>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <footer>
+        <span>© <span id="year"></span> Votre Nom</span>
+        <span>Une page — sobre, stable, sans obligation</span>
+      </footer>
+    </section>
+  </div>
+
+  <div class="tooltip" id="tooltip" role="status" aria-live="polite"></div>
+
+  <script>
+    // année auto
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Tooltip au survol des .doc
+    const tooltip = document.getElementById("tooltip");
+    const docs = document.querySelectorAll(".doc[data-tooltip]");
+
+    function moveTooltip(e){
+      // Décalage léger + évite de sortir de l'écran
+      const offset = 14;
+      let x = e.clientX + offset;
+      let y = e.clientY + offset;
+
+      const rect = tooltip.getBoundingClientRect();
+      const maxX = window.innerWidth - rect.width - 10;
+      const maxY = window.innerHeight - rect.height - 10;
+
+      if (x > maxX) x = maxX;
+      if (y > maxY) y = maxY;
+
+      tooltip.style.left = x + "px";
+      tooltip.style.top = y + "px";
+    }
+
+    docs.forEach(doc => {
+      doc.addEventListener("mouseenter", (e) => {
+        tooltip.textContent = doc.getAttribute("data-tooltip") || "";
+        tooltip.classList.add("visible");
+        moveTooltip(e);
+      });
+      doc.addEventListener("mousemove", moveTooltip);
+      doc.addEventListener("mouseleave", () => {
+        tooltip.classList.remove("visible");
+      });
+    });
+  </script>
+</body>
+</html>

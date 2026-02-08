@@ -89,27 +89,38 @@
       align-items:center;
       font-size: 14px;
     }
-    .nav-item{
-      color: #8a8a8a;
-      padding: 6px 8px;
+
+    /* Onglets actifs (sur les vraies pages) */
+    .nav-link{
+      padding: 6px 10px;
       border-radius: 10px;
       border: 1px solid transparent;
-      user-select:none;
-      cursor:not-allowed;
-      pointer-events:none; /* nav "présente mais désactivée" */
+      color:#6f6f6f;
+    }
+    .nav-link:hover{
+      text-decoration:none;
+      border-color: var(--line);
+      background:#fff;
+      box-shadow: 0 6px 18px rgba(0,0,0,.05);
+    }
+    .nav-link.active{
+      color:#1f1f1f;
+      border-color: var(--line);
+      background:#fff;
       position:relative;
     }
-    .nav-item::after{
+    .nav-link.active::after{
       content:"";
       position:absolute;
-      left:8px;
-      right:8px;
+      left:10px;
+      right:10px;
       bottom:4px;
-      height:2px;
-      opacity:.5;
-      background: linear-gradient(90deg, var(--blue), var(--green), var(--yellow), var(--red));
+      height:3px;
       border-radius: 999px;
+      background: linear-gradient(90deg, var(--blue), var(--green), var(--yellow), var(--red));
+      opacity:.35;
     }
+
 
     /* SECTIONS */
     section{
@@ -380,15 +391,15 @@
     <header>
       <div class="brand">
         <h1 class="name">Antoine Sérandour</h1>
-        <p class="tagline">Sciences sociales • physique • numérique • innovation</p>
+        <p class="tagline">Sciences sociales • Physique • Numérique • Innovation</p>
       </div>
 
       <!-- nav visible mais désactivée -->
       <nav aria-label="Navigation (désactivée)">
-        <span class="nav-item" aria-disabled="true">Accueil</span>
-        <span class="nav-item" aria-disabled="true">Parcours</span>
-        <span class="nav-item" aria-disabled="true">Travaux</span>
-        <span class="nav-item" aria-disabled="true">Bibliographie</span>
+        <a class="nav-link active" href="index.html">Accueil</a>
+        <a class="nav-link" href="parcours.html">Parcours</a>
+        <a class="nav-link" href="travaux.html">Travaux</a>
+        <a class="nav-link" href="bibliographie.html">Bibliographie</a>
       </nav>
     </header>
 
