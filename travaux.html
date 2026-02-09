@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="description" content="Travaux — documents et productions." />
-  <title>Votre Nom — Travaux</title>
+  <title>Antoine Sérandour — Travaux</title>
 
   <style>
     :root{
@@ -138,8 +138,9 @@
     .doc{
       display:flex;
       justify-content:space-between;
+      flex-wrap: wrap;
       align-items:center;
-      gap:14px;
+      gap: 2px 14px;
       padding: 12px 14px;
       border:1px solid var(--line);
       border-radius: 14px;
@@ -189,6 +190,24 @@
       text-decoration:none;
       box-shadow: var(--shadow);
       transform: translateY(-1px);
+    }
+
+    .doc-tags{
+      flex-basis: 100%;   /* ← passe à la ligne */
+      margin-left: 64px;  /* retrait sous le texte */
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3px 8px;
+    }
+
+    .tag{
+      font-size: 12px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: #5f5f5f;
+      white-space: nowrap;
     }
 
     /* SECTIONS REPLIABLES */
@@ -263,7 +282,7 @@
       padding: 8px 10px;
       border-radius: 10px;
       font-size: 12px;
-      max-width: 260px;
+      max-width: 360px;
       line-height: 1.35;
       pointer-events: none;
       z-index: 9999;
@@ -319,7 +338,7 @@
             <span class="pill blue" aria-hidden="true"></span>
             <h3 class="summary-title">Rapports de stage et rendus de physique</h3>
           </div>
-          <span class="summary-meta">3 documents</span>
+          <span class="summary-meta">4 documents</span>
         </summary>
 
         <div class="details-body">
@@ -328,28 +347,99 @@
           </p>
 
           <div class="docs">
-            <div class="doc" data-tooltip="Rapport (PDF). Contexte, méthode, recommandations. 25–30 pages.">
+            <div class="doc" data-tooltip="Abstract: Mirion Canberra, a commercial company, provides a range of detectors and softwares
+              for nuclear measurements. The data produced by Genie2k, one of these softwares for gamma
+              spectrometry, are encrypted in data files, which prevents the analysis of interesting features such as
+              trends calculation. The BR3 characterisation group has created an external database to give more
+              flexibility to data management. This study proposes some strategies and their implementations for
+              the improvement of the data management, with adding more data to the process and upgrading the
+              features of the uploading operation. This study calls for further investigations of new data and
+              features to implement, in order to centralise operations, from measurement to regulation report
+              production.">
               <div class="left">
                 <span class="badge">PDF</span>
-                <span class="doc-title">Rapport — Titre du document (année)</span>
+                <span class="doc-title">Rapport de stage M2 — Data management for radiological characterisation of nuclear waste and materials (2022)</span>
               </div>
-              <a class="btn" href="assets/rapport.pdf" download>Télécharger</a>
-            </div>
+              <a class="btn" href="Documents/report_sckcen.pdf" download>Télécharger</a>
 
-            <div class="doc" data-tooltip="Note courte. 2–4 pages. Points clés + pistes de lecture.">
-              <div class="left">
-                <span class="badge">Note</span>
-                <span class="doc-title">Note — Titre (année)</span>
+              <div class="doc-tags">
+                <span class="tag">Radioactive waste</span>
+                <span class="tag">Gamma spectrometry</span>
+                <span class="tag">in situ measurement</span>
+                <span class="tag">C# language</span>
+                <span class="tag">SQL</span>
+                <span class="tag">Visual Studio</span>
               </div>
-              <a class="btn" href="assets/note.pdf" download>Télécharger</a>
             </div>
+            
 
-            <div class="doc" data-tooltip="Synthèse structurée. Bibliographie + concepts + questions.">
+            <div class="doc" data-tooltip="Abstract : Beam Position Monitors (BPMs) are commonly used in particles accelerators to de-
+                termine the position of a beam. The device is however sensible to other parameters of the beam,
+                especially the diameter. If the electronic noise can blur this sensitivity, several measurements can
+                statistically reveal the dependency on the diameter. This study proposes such a statistical treatment
+                with the resolution expected for the accelerator ThomX. This study calls for further investigations,
+                especially experimental developments, to confirm the feasibility and the efficiency of this treatment
+                to determine the shape of the ring lattice in ThomX.">
               <div class="left">
                 <span class="badge">PDF</span>
-                <span class="doc-title">Synthèse — Titre (année)</span>
+                <span class="doc-title">Rapport de stage M1 — Determining the size of an electron beam using a Beam Position Monitor (2021)</span>
               </div>
-              <a class="btn" href="assets/synthese.pdf" download>Télécharger</a>
+              <a class="btn" href="Documents/rapport_IJClab.pdf" download>Télécharger</a>
+              
+              <div class="doc-tags">
+                <span class="tag">Simulation numérique</span>
+                <span class="tag">Accélérateur de particule</span>
+                <span class="tag">Beam position monitor</span>
+                <span class="tag">Gestion statistique du bruit</span>
+                <span class="tag">Python</span>
+              </div>
+            </div>
+
+            <div class="doc" data-tooltip="Résumé : En partant de l’article Frozen Impacted Drop : From Fragmentation to Hierarchical
+                Crack Patterns de Elisabeth Ghabache, Christophe Josserand, and Thomas Séon [1], nous nous
+                sommes intéressés aux régimes de fracture d’une goutte gelée. Nous avons mis en évidence les
+                régimes de fragmentation et hiérarchique présentés dans l’article, ainsi que d’autres régimes que
+                nous avons appelés mixtes. Nous avons vérifié plusieurs conclusions du modèle de fracture présenté
+                dans l’article, comme la pertinence du critère de Griffith ou la loi de puissance caractérisant le temps
+                d’apparition de la première fracture en régime hiérarchique tc ∝ ∆T −5. Nous avons également
+                interprété les régimes mixtes comme émanant des inhomogénéités d’épaisseur dans les gouttes
+                gelées. Nous avons enfin proposé des pistes pour poursuivre l’analyse des régimes mixtes.">
+              <div class="left">
+                <span class="badge">PDF</span>
+                <span class="doc-title">Rendu de projet M1 — Projet expérimental : Fracture d’une goutte d’eau gelée (2021)</span>
+              </div>
+              <a class="btn" href="Documents/rapport_projet_exp.pdf" download>Télécharger</a>
+
+              <div class="doc-tags">
+                <span class="tag">Régimes de facture</span>
+                <span class="tag">Reproductbilité</span>
+                <span class="tag">Acquisition haute vitesse</span>
+              </div>
+            </div>
+
+            <div class="doc" data-tooltip="Résumé : En 2016, un article de Chang et al. (5) publié par l’équipe d’accueil a présenté la mesure
+                du profil de densité d’un gaz de Bose après un temps de vol en fonction de l’impulsion des atomes.
+                Ce profil présente des ailes décroissantes en k^−4 à grandes impulsions dont la première interpréta-
+                tion a été rejeté par une étude théorique. La découverte récente d’impuretés de spin dans le gaz a
+                relancé la recherche d’une origine à ces ailes. Pendant ce stage, nous avons simulé la dynamique
+                de temps de vol de ces impuretés en les décrivant comme des particules ponctuelles interagissant
+                avec le champs moyen du condensat de Bose Einstein. Cette approche n’a pas rendu compte des
+                observations expérimentales. Ce résultat nous incite à conclure qu’un modèle plus complexe de
+                la dynamique des l’interaction condensat-impuretés doit être développé dans le futur pour rendre
+                compte des observations expérimentales.">
+              <div class="left">
+                <span class="badge">PDF</span>
+                <span class="doc-title">Rapport de stage L3 — Dynamique en temps de vol d’impuretés de spin dans un condensat de Bose-Einstein (2020)</span>
+              </div>
+              <a class="btn" href="Documents/rapport_fabry.pdf" download>Télécharger</a>
+
+              <div class="doc-tags">
+                <span class="tag">Condensat de Bose</span>
+                <span class="tag">Dynamique de temps de vol</span>
+                <span class="tag">Impureté magnétique</span>
+                <span class="tag">Simulation numérique</span>
+                <span class="tag">Python</span>
+              </div>
             </div>
           </div>
         </div>
@@ -418,7 +508,7 @@
       </details>
 
       <footer>
-        <span>© <span id="year"></span> Votre Nom</span>
+        <span>© <span id="year"></span> Antoine Sérandour</span>
         <span>Une page — sobre, stable, sans obligation</span>
       </footer>
     </section>
