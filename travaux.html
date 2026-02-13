@@ -110,6 +110,12 @@
       background: linear-gradient(90deg, var(--blue), var(--green), var(--yellow), var(--red));
       opacity:.35;
     }
+    .nav-link.desactive{
+      color: #9a9a9a;
+      cursor: default;
+      pointer-events: none; /* empêche le clic */
+      opacity: .6;
+    }
 
     /* SECTIONS */
     section{
@@ -217,13 +223,28 @@
 
     .tag{
       font-size: 12px;
-      padding: 4px 8px;
+      padding: 3px 7px;
       border-radius: 999px;
-      border: 1px solid var(--line);
-      background: #fff;
-      color: #5f5f5f;
+      border: 1px solid transparent;
+      background: rgba(0,0,0,0.04);
+      color: #2f2f2f;
       white-space: nowrap;
     }
+
+    /* Variantes */
+    .tag.blue{
+      background: rgba(47, 111, 235, 0.08);
+    }
+    .tag.green{
+      background: rgba(45, 164, 78, 0.08);
+    }
+    .tag.yellow{
+      background: rgba(212, 167, 44, 0.10);
+    }
+    .tag.red{
+      background: rgba(209, 36, 47, 0.08);
+    }
+
 
     /* SECTIONS REPLIABLES */
     details{
@@ -334,9 +355,9 @@
 
       <nav aria-label="Navigation">
         <a class="nav-link" href="index.html">Accueil</a>
-        <a class="nav-link" href="parcours.html">Parcours</a>
+        <a class="nav-link desactive" >Parcours</a>
         <a class="nav-link active" href="travaux.html">Travaux</a>
-        <a class="nav-link" href="bibliographie.html">Bibliographie</a>
+        <a class="nav-link desactive">Bibliographie</a>
       </nav>
     </header>
 
@@ -346,12 +367,199 @@
         Cette page référence l'ensemble de mes productions au cours de mes formations et de mes expériences professionnelles.
       </p>
 
-      <!-- SECTION 1 -->
+      
+
+
       <details open>
         <summary>
           <div class="summary-left">
-            <span class="pill blue" aria-hidden="true"></span>
-            <h3 class="summary-title">Rapports de stage et rendus de physique</h3>
+            <!-- <span class="pill green" aria-hidden="true"></span> -->
+            
+            <h3 class="summary-title">🤖 Rendus réalisés sur l'IA</h3>
+          </div>
+          <span class="summary-meta">3 documents</span>
+        </summary>
+
+        <div class="details-body">
+          <p class="details-desc">
+            Productions académiques sur l'IA lors de mes formations. 
+          </p>
+
+          <div class="docs">
+            <div class="doc" data-tooltip="Résumé : Cette présentation repose sur une enquête menée au sein de plusieurs administrations autour du déploiement interne d’outils d’IA générative. Elle analyse les représentations de ces technologies, tour à tour envisagées comme des cas d’usage opérationnels (aide à la rédaction, recherche documentaire, traduction) et comme une infrastructure clé posant des enjeux transversaux de sécurité, de gouvernance et de fiabilité de l’information. En montrant comment ces usages alimentent les débats internes et orientent les travaux administratifs en cours, l’étude éclaire les mécanismes pluriels de prise de décision publique et leur rôle dans l’élaboration des politiques et régulations liées à l’IA et à la manipulation de l’information..">
+              <div class="left">
+                <span class="badge">PPT</span>
+                <span class="doc-title">Présentation — Débats politiques de l’IA générative, seulement une question de risques et d’opportunités ? (2024)</span>
+              </div>
+              <a class="btn" href="Documents/Présentation_IAG_SGDSN.pdf" download>Télécharger</a>
+              <div class="doc-tags">
+                  <span class="tag">Intelligence artificielle générative</span>
+                  <span class="tag">Sécurité vs innovation</span>
+                  <span class="tag">Déploiement d'IA en administration</span>
+                  <span class="tag">Entretiens</span>
+              </div>
+            </div>
+
+            
+
+            <div class="doc" data-tooltip="Résumé : Les développements récents de l’intelligence artificielle générative (IAG) posent de nombreuses questions
+              politiques et juridiques, alimentant divers débats qui s’articulent autour de clivages. Cet article présente
+              un clivage « risques/opportunités », identifié à partir d’un rapport de l’assemblée nationale de février
+              2024. Cette opposition diffère de la traditionnelle dichotomie « innovation/régulation », en dépassant le
+              domaine de l’économie, en rationalisant, quantifiant, comparant les résultats plutôt que les processus, et
+              en considérant la dimension probabiliste des résultats. Si la société du risque, décrite par la sociologie du
+              risque, n’est pas le seul moteur qui amène ce cadre de réflexion dans l’arène politique, il est surement un
+              levier utilisé politiquement pour orienter les décisions.">
+              <div class="left">
+                <span class="badge">PDF</span>
+                <span class="doc-title">Article — Débats politiques de l’IA générative, seulement une question de risques et d’opportunités ? (2024)</span>
+              </div>
+              <a class="btn" href="Documents/SERANDOUR_IA_générative_risques_opportunités.pdf" download>Télécharger</a>
+              <div class="doc-tags">
+                  <span class="tag">Intelligence artificielle générative</span>
+                  <span class="tag">Politiques publiques d'innovation</span>
+                  <span class="tag">Risque - opportunité</span>
+                  <span class="tag">Sociologie du risque</span>
+              </div>
+            </div>
+
+
+            <div class="doc" data-tooltip="Résumé : Ce travail collectif analyse la controverse sociotechnique autour de ChatGPT et, plus largement, des IA génératives, en examinant la pluralité des acteurs et des arènes dans lesquelles se construisent les débats. À partir d’une enquête par entretiens et d'analyse textuelle, il montre comment ces technologies sont tour à tour qualifiées d’opportunité (gains de productivité, transformation du travail, création) et de menace (droits d’auteur, désinformation, dépendance économique, soutenabilité environnementale). L’étude met en évidence la manière dont ces représentations concurrentes structurent les débats publics, orientent les réponses réglementaires — notamment européennes — et reconfigurent les rapports entre entreprises, pouvoirs publics et société civile.">
+              <div class="left">
+                <span class="badge">PDF</span>
+                <span class="doc-title">Rapport — ChatGPT : opportunité ou menace ? (2024)</span>
+              </div>
+              <a class="btn" href="Documents/Controverse_Chatgpt_opportunite_ou_menace.pdf" download>Télécharger</a>
+              <div class="doc-tags">
+                  <span class="tag">ChatGPT</span>
+                  <span class="tag">Controverses scientifiques</span>
+                  <span class="tag">Risques et opportunités de l'IA</span>
+                  <span class="tag">Entretiens</span>
+                  <span class="tag">Analyses textuelles</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </details>
+
+ 
+      <details>
+        <summary>
+          <div class="summary-left">
+            <!-- <span class="pill yellow" aria-hidden="true"></span> -->
+            <h3 class="summary-title">⚙️Rendus réalisés sur les technologies quantiques</h3>
+          </div>
+          <span class="summary-meta">1 document</span>
+        </summary>
+
+        <div class="details-body">
+          <p class="details-desc">
+            Documents académiques produit sur les technologies quantiques.
+          </p>
+
+          <div class="docs">
+            <div class="doc" data-tooltip="Résumé : Ce mémoire analyse la production et la circulation des promesses associées à l’informatique quantique en France, en mobilisant le cadre d'économie des promesses de Pierre Benoît Joly et de la sociologie des sciences et des techniques (STS). À partir d’une enquête qualitative combinant analyse documentaire, entretiens semi directifs et observations des espaces académiques, industriels et administratifs, il examine la manière dont les discours prospectifs émergent et circulent, s'appuyant sur des concepts et objets scientifiques pour assoir leur légitimité et crédibilité pour développer un ordinateur quantique. Dans un premier temps, il s'intéresse aux promesses d'applications soutenant l'ordinateur quantique et de leurs émergence, à laquelle s'ajoute ensuite une promesse de marché considéré comme stratégique pour l'Etat. Enfin, il identifie la structure du secteur des technologies quantiques à travers l'étude des divers dispositifs publics de soutien à l'innovation et de construction de marché. Le rôle clé des promesses dans chacun de ces espaces permet d'enrôler les acteurs et d'engager des ressources en réduisant l'incertitude et diversifiant les attentes du progrès technologique attendu dans le champ.">
+              <div class="left">
+                <span class="badge">PDF</span>
+                <span class="doc-title">Mémoire — Les promesses de l'ordinateur quantique (2025)</span>
+              </div>
+              <a class="btn" href="Documents/Mémoire_Les_promesses_de_l_ordinateur_quantique_SERANDOUR.pdf" download>Télécharger</a>
+              <div class="doc-tags">
+                <span class="tag">Sociologie des sciences et techniques</span>
+                <span class="tag">Promesses technoscientfiques</span>
+                <span class="tag">Ordinateur quantique</span>
+                <span class="tag">Enquête qualitative</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <div class="summary-left">
+            <!-- <span class="pill yellow" aria-hidden="true"></span> -->
+            <h3 class="summary-title">🔍 Rapports réalisés sur le système de recherche et d'innovation français</h3>
+          </div>
+          <span class="summary-meta">1 document</span>
+        </summary>
+
+        <div class="details-body">
+          <p class="details-desc">
+            Documents produit sur les mécanismes d'innovation et d'orientation de la recherche en France.
+          </p>
+
+          <div class="docs">
+            <div class="doc" data-tooltip="Résumé : Ce rapport analyse les conditions de développement d’une recherche dite « impliquée » en France, entendue comme une recherche consciente de ses impacts sur la société, engagée pour répondre à des enjeux collectifs et orientée par l’intérêt général. À partir d’un état des lieux de l’écosystème français, il identifie les freins institutionnels, organisationnels et culturels à cette démarche, et formule des recommandations opérationnelles à destination des ministères, agences de financement, universités et organismes de recherche. Le rapport propose notamment la création d’outils et de structures dédiées (observatoire des sujets négligés, structures de recherche à mission, instruments d’évaluation d’impact) afin de renforcer la capacité de la recherche publique à contribuer de manière structurée et démocratique aux grands défis contemporains.">
+              <div class="left">
+                <span class="badge">PDF</span>
+                <span class="doc-title">Rapport — Soutenir la recherche impliquée (2025)</span>
+              </div>
+              <a class="btn" href="Documents/effisciences_rapport_complet.pdf" download>Télécharger</a>
+              <div class="doc-tags">
+                <span class="tag">Système de recherche français</span>
+                <span class="tag">Histoire, philosophie et sociologie des sciences</span>
+                <span class="tag">Recherche impliquée</span>
+                <span class="tag">Recommandations</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </details>
+
+
+      <details>
+        <summary>
+          <div class="summary-left">
+            <!-- <span class="pill yellow" aria-hidden="true"></span>-->
+            <h3 class="summary-title">📜 Rendus réalisés sur l'histoire des sciences</h3>
+          </div>
+          <span class="summary-meta">2 documents</span>
+        </summary>
+
+        <div class="details-body">
+          <p class="details-desc">
+            Documents académiques produit sur l'histoire de sciences.
+          </p>
+
+          <div class="docs">
+            <div class="doc" data-tooltip="Résumé : Cette fiche de lecture revient sur la séance « Le corps du scribe » animée par Chloé Ragazzoli dans le séminaire Introduction à l’Histoire des Sciences, des Techniques et des Savoirs (EHESS). À partir du chapitre 7 de « Scribes: les artisans du texte en Égypte ancienne » (2019) et du texte de Marcel Mauss « Les techniques du corps » (1934), elle montre l’intérêt d’une approche d’anthropologie historique centrée sur les gestes, les outils et l’incorporation des savoir-faire pour étudier l’écriture en Égypte antique. L’analyse met en évidence comment le travail du scribe se construit comme artisanat spécialisé, producteur de textes mais aussi opérateur de contrôle administratif, et comment les scribes revendiquent une autorité fondée sur l’expertise technique. Elle souligne également les stratégies de distinction et d’ascension sociale des scribes, décrites comme une « sub-élite » pratiquant un « braconnage rhétorique » des discours de l’élite. La discussion met en avant les apports méthodologiques de cette focale « à ras du sol » pour renouveler l’égyptologie (réhabilitation de corpus comme les miscellanées, dénaturalisation des catégories héritées), tout en pointant certaines limites liées à la distance historique et aux enjeux coloniaux des sources. Enfin, la fiche propose un déplacement vers les STS contemporaines en esquissant un parallèle avec les promesses de l’informatique quantique.">
+              <div class="left">
+                <span class="badge">PDF</span>
+                <span class="doc-title">Fiche de lecture — « Le corps du scribe » avec Chloé Ragazzoli (2025)</span>
+              </div>
+              <a class="btn" href="Documents/Compte_rendu_corps scribe.pdf" download>Télécharger</a>
+              <div class="doc-tags">
+                  <span class="tag">Histoire des techniques</span>
+                  <span class="tag">Egyptologie</span>
+                  <span class="tag">Scribe</span>
+                  <span class="tag">Les techniques du corps</span>
+              </div>
+            </div>
+
+            <div class="doc" data-tooltip="Résumé : Cette fiche de lecture analyse la séance « Perspectives historiennes sur l’étude des sciences » animée par Antonella Romano du séminaire Méthodologie 1 du parcours HSTS, à partir d’un essai programmatique de Lorraine Daston (2017) sur le passage de l’« histoire des sciences » à une « histoire des savoirs ». Elle s’intéresse à ce que ce geste terminologique et disciplinaire produit en replaçant la proposition de Daston dans l’historiographie du champ (de la tradition hagiographique aux inflexions kuhniennes et aux science studies), puis discute ses présupposés et ses angles morts à partir des échanges de la séance. L’argument central est que l’élargissement de « science » à « savoirs » risque de reconduire une stratégie surtout conceptuelle, encore structurée par un canon occidental et par des asymétries institutionnelles, si elle n’est pas accompagnée d’un travail historien plus empirique sur les pratiques, les sources et les médiations, notamment dans une perspective globale et postcoloniale. La fiche propose alors un déplacement : l’enjeu ne serait pas seulement de redéfinir l’objet (« sciences »/« savoirs »), mais de reposer la question de ce que « faire de l’histoire » signifie (récits, pluralité des perspectives, rapports aux généralisations), en valorisant une approche matérialiste et située inspirée des travaux d’Antonella Romano et de l’histoire des pratiques de l’écrit. Elle conclut sur une proposition personnelle : plutôt qu’un récit unifié fédérateur, l’avenir du champ gagnerait à renforcer la circulation de récits pluriels, afin de construire des comparaisons plus robustes et moins eurocentrées.">
+              <div class="left">
+                <span class="badge">PDF</span>
+                <span class="doc-title">Fiche de lecture — « Perspectives historiennes sur l’étude des sciences » de Loraine Daston (2025)</span>
+              </div>
+              <a class="btn" href="Documents/SERANDOUR_Fiche_lecture_DASTON.pdf" download>Télécharger</a>
+              <div class="doc-tags">
+                  <span class="tag">Histoire des sciences</span>
+                  <span class="tag">Sciences vs Savoirs</span>
+                  <span class="tag">Historiographie</span>
+                  <span class="tag">Epistemologie</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </details>
+
+
+      <details>
+        <summary>
+          <div class="summary-left">
+            <!-- <span class="pill blue" aria-hidden="true"></span>-->
+            <h3 class="summary-title">💻 Rapports de stage et rendus de physique</h3>
           </div>
           <span class="summary-meta">4 documents</span>
         </summary>
@@ -455,131 +663,6 @@
                 <span class="tag">Simulation numérique</span>
                 <span class="tag">Python</span>
               </div>
-            </div>
-          </div>
-        </div>
-      </details>
-
-      <!-- SECTION 2 -->
-      <details>
-        <summary>
-          <div class="summary-left">
-            <span class="pill green" aria-hidden="true"></span>
-            <h3 class="summary-title">Rendus de sciences sociales</h3>
-          </div>
-          <span class="summary-meta">5 documents</span>
-        </summary>
-
-        <div class="details-body">
-          <p class="details-desc">
-            Productions académiques lors de ma formation en sciences sociales aux Mines et à l'EHESS. 
-          </p>
-
-          <div class="docs">
-            <div class="doc" data-tooltip="Résumé : Ce mémoire analyse la production et la circulation des promesses associées à l’informatique quantique en France, en mobilisant le cadre d'économie des promesses de Pierre Benoît Joly et de la sociologie des sciences et des techniques (STS). À partir d’une enquête qualitative combinant analyse documentaire, entretiens semi directifs et observations des espaces académiques, industriels et administratifs, il examine la manière dont les discours prospectifs émergent et circulent, s'appuyant sur des concepts et objets scientifiques pour assoir leur légitimité et crédibilité pour développer un ordinateur quantique. Dans un premier temps, il s'intéresse aux promesses d'applications soutenant l'ordinateur quantique et de leurs émergence, à laquelle s'ajoute ensuite une promesse de marché considéré comme stratégique pour l'Etat. Enfin, il identifie la structure du secteur des technologies quantiques à travers l'étude des divers dispositifs publics de soutien à l'innovation et de construction de marché. Le rôle clé des promesses dans chacun de ces espaces permet d'enrôler les acteurs et d'engager des ressources en réduisant l'incertitude et diversifiant les attentes du progrès technologique attendu dans le champ.">
-              <div class="left">
-                <span class="badge">PDF</span>
-                <span class="doc-title">Mémoire — Les promesses de l'ordinateur quantique (2025)</span>
-              </div>
-              <a class="btn" href="Documents/Mémoire_Les_promesses_de_l_ordinateur_quantique_SERANDOUR.pdf" download>Télécharger</a>
-              <div class="doc-tags">
-                <span class="tag">Sociologie des sciences et techniques</span>
-                <span class="tag">Promesses technoscientfiques</span>
-                <span class="tag">Ordinateur quantique</span>
-                <span class="tag">Enquête qualitative</span>
-              </div>
-            </div>
-
-            <div class="doc" data-tooltip="Résumé : Cette fiche de lecture revient sur la séance « Le corps du scribe » animée par Chloé Ragazzoli dans le séminaire Introduction à l’Histoire des Sciences, des Techniques et des Savoirs (EHESS). À partir du chapitre 7 de « Scribes: les artisans du texte en Égypte ancienne » (2019) et du texte de Marcel Mauss « Les techniques du corps » (1934), elle montre l’intérêt d’une approche d’anthropologie historique centrée sur les gestes, les outils et l’incorporation des savoir-faire pour étudier l’écriture en Égypte antique. L’analyse met en évidence comment le travail du scribe se construit comme artisanat spécialisé, producteur de textes mais aussi opérateur de contrôle administratif, et comment les scribes revendiquent une autorité fondée sur l’expertise technique. Elle souligne également les stratégies de distinction et d’ascension sociale des scribes, décrites comme une « sub-élite » pratiquant un « braconnage rhétorique » des discours de l’élite. La discussion met en avant les apports méthodologiques de cette focale « à ras du sol » pour renouveler l’égyptologie (réhabilitation de corpus comme les miscellanées, dénaturalisation des catégories héritées), tout en pointant certaines limites liées à la distance historique et aux enjeux coloniaux des sources. Enfin, la fiche propose un déplacement vers les STS contemporaines en esquissant un parallèle avec les promesses de l’informatique quantique.">
-              <div class="left">
-                <span class="badge">PDF</span>
-                <span class="doc-title">Fiche de lecture — « Le corps du scribe » avec Chloé Ragazzoli (2025)</span>
-              </div>
-              <a class="btn" href="Documents/Compte_rendu_corps scribe.pdf" download>Télécharger</a>
-              <div class="doc-tags">
-                  <span class="tag">Histoire des techniques</span>
-                  <span class="tag">Egyptologie</span>
-                  <span class="tag">Scribe</span>
-                  <span class="tag">Les techniques du corps</span>
-              </div>
-            </div>
-
-            <div class="doc" data-tooltip="Résumé : Cette fiche de lecture analyse la séance « Perspectives historiennes sur l’étude des sciences » animée par Antonella Romano du séminaire Méthodologie 1 du parcours HSTS, à partir d’un essai programmatique de Lorraine Daston (2017) sur le passage de l’« histoire des sciences » à une « histoire des savoirs ». Elle s’intéresse à ce que ce geste terminologique et disciplinaire produit en replaçant la proposition de Daston dans l’historiographie du champ (de la tradition hagiographique aux inflexions kuhniennes et aux science studies), puis discute ses présupposés et ses angles morts à partir des échanges de la séance. L’argument central est que l’élargissement de « science » à « savoirs » risque de reconduire une stratégie surtout conceptuelle, encore structurée par un canon occidental et par des asymétries institutionnelles, si elle n’est pas accompagnée d’un travail historien plus empirique sur les pratiques, les sources et les médiations, notamment dans une perspective globale et postcoloniale. La fiche propose alors un déplacement : l’enjeu ne serait pas seulement de redéfinir l’objet (« sciences »/« savoirs »), mais de reposer la question de ce que « faire de l’histoire » signifie (récits, pluralité des perspectives, rapports aux généralisations), en valorisant une approche matérialiste et située inspirée des travaux d’Antonella Romano et de l’histoire des pratiques de l’écrit. Elle conclut sur une proposition personnelle : plutôt qu’un récit unifié fédérateur, l’avenir du champ gagnerait à renforcer la circulation de récits pluriels, afin de construire des comparaisons plus robustes et moins eurocentrées.">
-              <div class="left">
-                <span class="badge">PDF</span>
-                <span class="doc-title">Fiche de lecture — « Perspectives historiennes sur l’étude des sciences » de Loraine Daston (2025)</span>
-              </div>
-              <a class="btn" href="Documents/SERANDOUR_Fiche_lecture_DASTON.pdf" download>Télécharger</a>
-              <div class="doc-tags">
-                  <span class="tag">Histoire des sciences</span>
-                  <span class="tag">Sciences vs Savoirs</span>
-                  <span class="tag">Historiographie</span>
-                  <span class="tag">Epistemologie</span>
-              </div>
-            </div>
-
-            <div class="doc" data-tooltip="Résumé : Les développements récents de l’intelligence artificielle générative (IAG) posent de nombreuses questions
-              politiques et juridiques, alimentant divers débats qui s’articulent autour de clivages. Cet article présente
-              un clivage « risques/opportunités », identifié à partir d’un rapport de l’assemblée nationale de février
-              2024. Cette opposition diffère de la traditionnelle dichotomie « innovation/régulation », en dépassant le
-              domaine de l’économie, en rationalisant, quantifiant, comparant les résultats plutôt que les processus, et
-              en considérant la dimension probabiliste des résultats. Si la société du risque, décrite par la sociologie du
-              risque, n’est pas le seul moteur qui amène ce cadre de réflexion dans l’arène politique, il est surement un
-              levier utilisé politiquement pour orienter les décisions.">
-              <div class="left">
-                <span class="badge">PDF</span>
-                <span class="doc-title">Article — Débats politiques de l’IA générative, seulement une question de risques et d’opportunités ? (2024)</span>
-              </div>
-              <a class="btn" href="Documents/SERANDOUR_IA_générative_risques_opportunités.pdf" download>Télécharger</a>
-              <div class="doc-tags">
-                  <span class="tag">Intelligence artificielle générative</span>
-                  <span class="tag">Politiques publiques d'innovation</span>
-                  <span class="tag">Risque - opportunité</span>
-                  <span class="tag">Sociologie du risque</span>
-              </div>
-            </div>
-
-
-            <div class="doc" data-tooltip="Résumé : ">
-              <div class="left">
-                <span class="badge">PDF</span>
-                <span class="doc-title">Rapport — ChatGPT : opportunité ou menace ? (2024)</span>
-              </div>
-              <a class="btn" href="Documents/Controverse_Chatgpt_opportunite_ou_menace.pdf" download>Télécharger</a>
-              <div class="doc-tags">
-                  <span class="tag">ChatGPT</span>
-                  <span class="tag">Controverses scientifiques</span>
-                  <span class="tag">Risques et opportunités de l'IA</span>
-                  <span class="tag">Entretiens</span>
-                  <span class="tag">Analyses textuelles</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </details>
-
-      <!-- SECTION 3 -->
-      <details>
-        <summary>
-          <div class="summary-left">
-            <span class="pill yellow" aria-hidden="true"></span>
-            <h3 class="summary-title">Supports & interventions</h3>
-          </div>
-          <span class="summary-meta">1 document</span>
-        </summary>
-
-        <div class="details-body">
-          <p class="details-desc">
-            Slides, supports de présentation, interventions publiques, ateliers. (Tu peux aussi mettre des liens externes.)
-          </p>
-
-          <div class="docs">
-            <div class="doc" data-tooltip="Slides / support. 10–20 min. Public non spécialiste.">
-              <div class="left">
-                <span class="badge">Slides</span>
-                <span class="doc-title">Présentation — Titre (année)</span>
-              </div>
-              <a class="btn" href="assets/slides.pdf" download>Télécharger</a>
             </div>
           </div>
         </div>

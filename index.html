@@ -121,6 +121,13 @@
       opacity:.35;
     }
 
+    .nav-link.desactive{
+      color: #9a9a9a;
+      cursor: default;
+      pointer-events: none; /* empêche le clic */
+      opacity: .6;
+    }
+
 
     /* SECTIONS */
     section{
@@ -304,16 +311,20 @@
       gap: 10px;
       margin-top: 8px;
     }
+    
     .doc{
       display:flex;
       justify-content:space-between;
+      flex-wrap: wrap;          /* ← AJOUT */
       align-items:center;
-      gap:14px;
+      gap: 6px 14px;            /* ← remplace gap:14px */
       padding: 12px 14px;
       border:1px solid var(--line);
       border-radius: 14px;
       background:#fff;
     }
+
+
     .doc .left{
       display:flex;
       align-items:center;
@@ -341,6 +352,59 @@
       padding: 8px 10px;
       border-radius: 12px;
     }
+
+    .doc-tags{
+      flex-basis: 100%;
+      margin-left: 34px;
+      display:flex;
+      flex-wrap:wrap;
+      gap: 6px 8px;
+    }
+
+    .tag{
+      font-size: 12px;
+      padding: 3px 7px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      background: rgba(0,0,0,0.04);
+      color: #2f2f2f;
+      white-space: nowrap;
+    }
+
+    /* Variantes */
+    .tag.blue{
+      background: rgba(47, 111, 235, 0.08);
+    }
+    .tag.green{
+      background: rgba(45, 164, 78, 0.08);
+    }
+    .tag.yellow{
+      background: rgba(212, 167, 44, 0.10);
+    }
+    .tag.red{
+      background: rgba(209, 36, 47, 0.08);
+    }
+
+    .tooltip{
+      position: fixed;
+      top: 0;
+      left: 0;
+      transform: translate(12px, 12px);
+      background: rgba(20,20,20,.92);
+      color: #fff;
+      padding: 8px 10px;
+      border-radius: 10px;
+      font-size: 12px;
+      max-width: 460px;
+      line-height: 1.35;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0;
+      transition: opacity .08s ease;
+    }
+    .tooltip.visible{ opacity: 1; }
+
+
 
     /* CONTACT discret */
     .contact-line{
@@ -396,9 +460,9 @@
       <!-- nav visible mais désactivée -->
       <nav aria-label="Navigation (désactivée)">
         <a class="nav-link active" href="index.html">Accueil</a>
-        <a class="nav-link" href="parcours.html">Parcours</a>
+        <a class="nav-link desactive" >Parcours</a>
         <a class="nav-link" href="travaux.html">Travaux</a>
-        <a class="nav-link" href="bibliographie.html">Bibliographie</a>
+        <a class="nav-link desactive" >Bibliographie</a>
       </nav>
     </header>
 
@@ -425,7 +489,7 @@
             <li class="chip"><span class="dot green"></span> Action publique</li>
             <li class="chip"><span class="dot red"></span> Sociologie des sciences</li>
             <li class="chip"><span class="dot red"></span> Evaluation des politiques publiques</li>
-
+            <li class="chip"><span class="dot red"></span> Simulations numériques</li>
           </ul>
 
           <div class="cta-row">
@@ -496,9 +560,10 @@
 
     <!-- SECTION: TRACES / DOCUMENTS (OPTIONNELLE MAIS COHÉRENTE) -->
     <section id="documents">
-      <h2 class="section-title">Documents</h2>
-
+      <h2 class="section-title">Echantillon de productions personnelles</h2>
+      
       <div class="docs" role="list">
+        <!--
         <div class="doc" role="listitem">
           <div class="left">
             <span class="badge">PDF</span>
@@ -513,12 +578,60 @@
             <span class="doc-title">Rapport — Soutenir la Recherche Impliquée en France (2025)</span>
           </div>
           <a class="btn" href="Documents/effisciences_rapport_complet.pdf" download>Télécharger</a>
+        </div>-->
+      
+      
+        <div class="doc" data-tooltip="Résumé : Ce mémoire analyse la production et la circulation des promesses associées à l’informatique quantique en France, en mobilisant le cadre d'économie des promesses de Pierre Benoît Joly et de la sociologie des sciences et des techniques (STS). À partir d’une enquête qualitative combinant analyse documentaire, entretiens semi directifs et observations des espaces académiques, industriels et administratifs, il examine la manière dont les discours prospectifs émergent et circulent, s'appuyant sur des concepts et objets scientifiques pour assoir leur légitimité et crédibilité pour développer un ordinateur quantique. Dans un premier temps, il s'intéresse aux promesses d'applications soutenant l'ordinateur quantique et de leurs émergence, à laquelle s'ajoute ensuite une promesse de marché considéré comme stratégique pour l'Etat. Enfin, il identifie la structure du secteur des technologies quantiques à travers l'étude des divers dispositifs publics de soutien à l'innovation et de construction de marché. Le rôle clé des promesses dans chacun de ces espaces permet d'enrôler les acteurs et d'engager des ressources en réduisant l'incertitude et diversifiant les attentes du progrès technologique attendu dans le champ.">
+              <div class="left">
+                <span class="badge">PDF</span>
+                <span class="doc-title">Mémoire — Les promesses de l'ordinateur quantique (2025)</span>
+              </div>
+              <a class="btn" href="Documents/Mémoire_Les_promesses_de_l_ordinateur_quantique_SERANDOUR.pdf" download>Télécharger</a>
+              <div class="doc-tags">
+                <span class="tag">Sociologie des sciences et techniques</span>
+                <span class="tag">Promesses technoscientfiques</span>
+                <span class="tag">Ordinateur quantique</span>
+                <span class="tag">Enquête qualitative</span>
+              </div>
+        </div>
+          
+      
+        <div class="doc" data-tooltip="Résumé : Ce rapport analyse les conditions de développement d’une recherche dite « impliquée » en France, entendue comme une recherche consciente de ses impacts sur la société, engagée pour répondre à des enjeux collectifs et orientée par l’intérêt général. À partir d’un état des lieux de l’écosystème français, il identifie les freins institutionnels, organisationnels et culturels à cette démarche, et formule des recommandations opérationnelles à destination des ministères, agences de financement, universités et organismes de recherche. Le rapport propose notamment la création d’outils et de structures dédiées (observatoire des sujets négligés, structures de recherche à mission, instruments d’évaluation d’impact) afin de renforcer la capacité de la recherche publique à contribuer de manière structurée et démocratique aux grands défis contemporains.">
+              <div class="left">
+                <span class="badge">PDF</span>
+                <span class="doc-title">Rapport — Soutenir la recherche impliquée (2025)</span>
+              </div>
+              <a class="btn" href="Documents/effisciences_rapport_complet.pdf" download>Télécharger</a>
+              <div class="doc-tags">
+                <span class="tag">Système de recherche français</span>
+                <span class="tag">Histoire, philosophie et sociologie des sciences</span>
+                <span class="tag">Recherche impliquée</span>
+                <span class="tag">Recommandations</span>
+              </div>
         </div>
 
-      </div>
+
+        <div class="doc" data-tooltip="Résumé : Ce travail collectif analyse la controverse sociotechnique autour de ChatGPT et, plus largement, des IA génératives, en examinant la pluralité des acteurs et des arènes dans lesquelles se construisent les débats. À partir d’une enquête par entretiens et d'analyse textuelle, il montre comment ces technologies sont tour à tour qualifiées d’opportunité (gains de productivité, transformation du travail, création) et de menace (droits d’auteur, désinformation, dépendance économique, soutenabilité environnementale). L’étude met en évidence la manière dont ces représentations concurrentes structurent les débats publics, orientent les réponses réglementaires — notamment européennes — et reconfigurent les rapports entre entreprises, pouvoirs publics et société civile.">
+              <div class="left">
+                <span class="badge">PDF</span>
+                <span class="doc-title">Rapport — ChatGPT : opportunité ou menace ? (2024)</span>
+              </div>
+              <a class="btn" href="Documents/Controverse_Chatgpt_opportunite_ou_menace.pdf" download>Télécharger</a>
+              <div class="doc-tags">
+                  <span class="tag">ChatGPT</span>
+                  <span class="tag">Controverses scientifiques</span>
+                  <span class="tag">Risques et opportunités de l'IA</span>
+                  <span class="tag">Entretiens</span>
+                  <span class="tag">Analyses textuelles</span>
+              </div>
+        </div>
+
+      </div> 
+
+      
     </section>
 
-    <!-- CONTACT (DISCRET, PAS "SECTION CONTACT") -->
+    
     <section id="contact">
       <h2 class="section-title">Contact</h2>
 
@@ -539,9 +652,44 @@
     </section>
   </div>
 
+  <div class="tooltip" id="tooltip" role="status" aria-live="polite"></div>
+
   <script>
     // année automatique dans le footer
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Tooltip au survol des .doc
+    const tooltip = document.getElementById("tooltip");
+    const docs = document.querySelectorAll(".doc[data-tooltip]");
+
+    function moveTooltip(e){
+      // Décalage léger + évite de sortir de l'écran
+      const offset = 14;
+      let x = e.clientX + offset;
+      let y = e.clientY + offset;
+
+      const rect = tooltip.getBoundingClientRect();
+      const maxX = window.innerWidth - rect.width - 10;
+      const maxY = window.innerHeight - rect.height - 10;
+
+      if (x > maxX) x = maxX;
+      if (y > maxY) y = maxY;
+
+      tooltip.style.left = x + "px";
+      tooltip.style.top = y + "px";
+    }
+
+    docs.forEach(doc => {
+      doc.addEventListener("mouseenter", (e) => {
+        tooltip.textContent = doc.getAttribute("data-tooltip") || "";
+        tooltip.classList.add("visible");
+        moveTooltip(e);
+      });
+      doc.addEventListener("mousemove", moveTooltip);
+      doc.addEventListener("mouseleave", () => {
+        tooltip.classList.remove("visible");
+      });
+    });
   </script>
 </body>
 </html>
