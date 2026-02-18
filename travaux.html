@@ -303,6 +303,10 @@
       overflow:hidden;
       text-overflow:ellipsis;
     }
+
+    .title-mobile {
+      display: none;
+    }
     .summary-meta{
       color: var(--muted);
       font-size: 13px;
@@ -352,22 +356,19 @@
     }
 
     @media (max-width: 860px){
+      .title-desktop {
+        display: none;
+      }
+      .title-mobile {
+        display: inline;
+      }
       header{ align-items:flex-start; flex-direction:column; }
       nav{ justify-content:flex-start; }
       .container{
         padding-top: calc(24px + env(safe-area-inset-top));
         padding-bottom: calc(40px + env(safe-area-inset-bottom));
       }
-      /*.doc{ align-items:flex-start; }*/
-      /*.doc{
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .doc a.btn{
-        width: auto;
-        text-align:center;
-      }*/
+      
       .doc-tags{ display:none; }
       h1,h2,h3, .doc-title{
         overflow-wrap: anywhere;
@@ -424,7 +425,10 @@
           <div class="summary-left">
             <!-- <span class="pill green" aria-hidden="true"></span> -->
             
-            <h3 class="summary-title">🤖 Rendus réalisés sur l'IA</h3>
+            <h3 class="summary-title">
+              <span class="title-desktop">🤖 Rendus réalisés sur l’IA</span>
+              <span class="title-mobile">🤖 IA générative</span>
+            </h3>
           </div>
           <span class="summary-meta">3 documents</span>
         </summary>
@@ -489,7 +493,11 @@
         <summary>
           <div class="summary-left">
             <!-- <span class="pill yellow" aria-hidden="true"></span> -->
-            <h3 class="summary-title">⚙️Rendus réalisés sur les technologies quantiques</h3>
+            
+            <h3 class="summary-title">
+              <span class="title-desktop">⚙️Rendus réalisés sur les technologies quantiques</span>
+              <span class="title-mobile">⚙️Technologies quantiques</span>
+            </h3>
           </div>
           <span class="summary-meta">1 document</span>
         </summary>
@@ -521,7 +529,10 @@
         <summary>
           <div class="summary-left">
             <!-- <span class="pill yellow" aria-hidden="true"></span> -->
-            <h3 class="summary-title">🔍 Rapports réalisés sur le système de recherche et d'innovation français</h3>
+            <h3 class="summary-title">
+              <span class="title-desktop">🔍 Rapports réalisés sur le système de recherche et d'innovation français</span>
+              <span class="title-mobile">🔍 Recherche française</span>
+            </h3>
           </div>
           <span class="summary-meta">1 document</span>
         </summary>
@@ -554,7 +565,10 @@
         <summary>
           <div class="summary-left">
             <!-- <span class="pill yellow" aria-hidden="true"></span>-->
-            <h3 class="summary-title">📜 Rendus réalisés sur l'histoire des sciences</h3>
+            <h3 class="summary-title">
+              <span class="title-desktop">📜 Rendus réalisés sur l'histoire des sciences</span>
+              <span class="title-mobile">📜 Histoire des sciences</span>
+            </h3>
           </div>
           <span class="summary-meta">2 documents</span>
         </summary>
@@ -601,7 +615,10 @@
         <summary>
           <div class="summary-left">
             <!-- <span class="pill blue" aria-hidden="true"></span>-->
-            <h3 class="summary-title">💻 Rapports de stage et rendus de physique</h3>
+            <h3 class="summary-title">
+              <span class="title-desktop">💻 Rapports de stage et rendus de physique</span>
+              <span class="title-mobile">💻 Physique</span>
+            </h3>
           </div>
           <span class="summary-meta">4 documents</span>
         </summary>
