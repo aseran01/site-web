@@ -24,13 +24,24 @@
     }
 
     *{ box-sizing:border-box; }
-    html,body{ height:100%; }
+    /*html, body{
+      height: auto;
+      min-height: 100%;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }*/
+    html, body{
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+
     body{
       margin:0;
       background:var(--bg);
       color:var(--ink);
       line-height:1.55;
       font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial;
+      min-height: 100%;
     }
     h1,h2,h3,.name{
       font-family: ui-serif, "Georgia", "Times New Roman", Times, serif;
@@ -40,8 +51,8 @@
     a:hover{ text-decoration:underline; }
 
     .container{
-      max-width:var(--max);
-      margin:0 auto;
+      max-width: var(--max);
+      margin: 0 auto;
       padding: 40px 20px 28px;
     }
 
@@ -167,6 +178,8 @@
       border-radius: 14px;
       background:#fff;
       transition: transform .10s ease, box-shadow .12s ease;
+      width:100%;
+      min-width:0;
     }
     .doc:hover{
       transform: translateY(-1px);
@@ -254,6 +267,7 @@
       padding: 12px 14px;
       box-shadow: 0 10px 24px rgba(0,0,0,.03);
       margin: 12px 0;
+      overflow: visible;
     }
     summary{
       cursor:pointer;
@@ -340,7 +354,42 @@
     @media (max-width: 860px){
       header{ align-items:flex-start; flex-direction:column; }
       nav{ justify-content:flex-start; }
-      .doc{ align-items:flex-start; }
+      .container{
+        padding-top: calc(24px + env(safe-area-inset-top));
+        padding-bottom: calc(40px + env(safe-area-inset-bottom));
+      }
+      /*.doc{ align-items:flex-start; }*/
+      /*.doc{
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .doc a.btn{
+        width: auto;
+        text-align:center;
+      }*/
+      .doc-tags{ display:none; }
+      h1,h2,h3, .doc-title{
+        overflow-wrap: anywhere;
+        word-break: normal;
+      }
+      .doc{ width: 100%; min-width: 0; }
+
+      .doc .left{ min-width: 0; }
+
+      .doc-title{
+        white-space: normal;      
+        overflow: visible;
+        text-overflow: clip;
+      }
+
+      .doc a.btn{
+        flex: 0 0 auto;
+        white-space: nowrap;    
+        margin-left: auto;       
+      }
+      .tooltip{ display: none !important; }
+
     }
   </style>
 </head>
@@ -370,7 +419,7 @@
       
 
 
-      <details open>
+      <details class="default-open">
         <summary>
           <div class="summary-left">
             <!-- <span class="pill green" aria-hidden="true"></span> -->
@@ -402,14 +451,7 @@
 
             
 
-            <div class="doc" data-tooltip="Résumé : Les développements récents de l’intelligence artificielle générative (IAG) posent de nombreuses questions
-              politiques et juridiques, alimentant divers débats qui s’articulent autour de clivages. Cet article présente
-              un clivage « risques/opportunités », identifié à partir d’un rapport de l’assemblée nationale de février
-              2024. Cette opposition diffère de la traditionnelle dichotomie « innovation/régulation », en dépassant le
-              domaine de l’économie, en rationalisant, quantifiant, comparant les résultats plutôt que les processus, et
-              en considérant la dimension probabiliste des résultats. Si la société du risque, décrite par la sociologie du
-              risque, n’est pas le seul moteur qui amène ce cadre de réflexion dans l’arène politique, il est surement un
-              levier utilisé politiquement pour orienter les décisions.">
+            <div class="doc" data-tooltip="Résumé : Les développements récents de l’intelligence artificielle générative (IAG) posent de nombreuses questions politiques et juridiques, alimentant divers débats qui s’articulent autour de clivages. Cet article présente un clivage « risques/opportunités », identifié à partir d’un rapport de l’assemblée nationale de février 2024. Cette opposition diffère de la traditionnelle dichotomie « innovation/régulation », en dépassant le domaine de l’économie, en rationalisant, quantifiant, comparant les résultats plutôt que les processus, et en considérant la dimension probabiliste des résultats. Si la société du risque, décrite par la sociologie du risque, n’est pas le seul moteur qui amène ce cadre de réflexion dans l’arène politique, il est surement un levier utilisé politiquement pour orienter les décisions.">
               <div class="left">
                 <span class="badge">PDF</span>
                 <span class="doc-title">Article — Débats politiques de l’IA générative, seulement une question de risques et d’opportunités ? (2024)</span>
@@ -570,15 +612,7 @@
           </p>
 
           <div class="docs">
-            <div class="doc" data-tooltip="Abstract: Mirion Canberra, a commercial company, provides a range of detectors and softwares
-              for nuclear measurements. The data produced by Genie2k, one of these softwares for gamma
-              spectrometry, are encrypted in data files, which prevents the analysis of interesting features such as
-              trends calculation. The BR3 characterisation group has created an external database to give more
-              flexibility to data management. This study proposes some strategies and their implementations for
-              the improvement of the data management, with adding more data to the process and upgrading the
-              features of the uploading operation. This study calls for further investigations of new data and
-              features to implement, in order to centralise operations, from measurement to regulation report
-              production.">
+            <div class="doc" data-tooltip="Abstract: Mirion Canberra, a commercial company, provides a range of detectors and softwares for nuclear measurements. The data produced by Genie2k, one of these softwares for gamma spectrometry, are encrypted in data files, which prevents the analysis of interesting features such as trends calculation. The BR3 characterisation group has created an external database to give more flexibility to data management. This study proposes some strategies and their implementations for the improvement of the data management, with adding more data to the process and upgrading the features of the uploading operation. This study calls for further investigations of new data and features to implement, in order to centralise operations, from measurement to regulation report production.">
               <div class="left">
                 <span class="badge">PDF</span>
                 <span class="doc-title">Rapport de stage M2 — Data management for radiological characterisation of nuclear waste and materials (2022)</span>
@@ -596,13 +630,7 @@
             </div>
             
 
-            <div class="doc" data-tooltip="Abstract : Beam Position Monitors (BPMs) are commonly used in particles accelerators to de-
-                termine the position of a beam. The device is however sensible to other parameters of the beam,
-                especially the diameter. If the electronic noise can blur this sensitivity, several measurements can
-                statistically reveal the dependency on the diameter. This study proposes such a statistical treatment
-                with the resolution expected for the accelerator ThomX. This study calls for further investigations,
-                especially experimental developments, to confirm the feasibility and the efficiency of this treatment
-                to determine the shape of the ring lattice in ThomX.">
+            <div class="doc" data-tooltip="Abstract : Beam Position Monitors (BPMs) are commonly used in particles accelerators to determine the position of a beam. The device is however sensible to other parameters of the beam, especially the diameter. If the electronic noise can blur this sensitivity, several measurements can statistically reveal the dependency on the diameter. This study proposes such a statistical treatment with the resolution expected for the accelerator ThomX. This study calls for further investigations, especially experimental developments, to confirm the feasibility and the efficiency of this treatment to determine the shape of the ring lattice in ThomX.">
               <div class="left">
                 <span class="badge">PDF</span>
                 <span class="doc-title">Rapport de stage M1 — Determining the size of an electron beam using a Beam Position Monitor (2021)</span>
@@ -618,15 +646,7 @@
               </div>
             </div>
 
-            <div class="doc" data-tooltip="Résumé : En partant de l’article Frozen Impacted Drop : From Fragmentation to Hierarchical
-                Crack Patterns de Elisabeth Ghabache, Christophe Josserand, and Thomas Séon [1], nous nous
-                sommes intéressés aux régimes de fracture d’une goutte gelée. Nous avons mis en évidence les
-                régimes de fragmentation et hiérarchique présentés dans l’article, ainsi que d’autres régimes que
-                nous avons appelés mixtes. Nous avons vérifié plusieurs conclusions du modèle de fracture présenté
-                dans l’article, comme la pertinence du critère de Griffith ou la loi de puissance caractérisant le temps
-                d’apparition de la première fracture en régime hiérarchique tc ∝ ∆T −5. Nous avons également
-                interprété les régimes mixtes comme émanant des inhomogénéités d’épaisseur dans les gouttes
-                gelées. Nous avons enfin proposé des pistes pour poursuivre l’analyse des régimes mixtes.">
+            <div class="doc" data-tooltip="Résumé : En partant de l’article Frozen Impacted Drop : From Fragmentation to Hierarchical Crack Patterns de Elisabeth Ghabache, Christophe Josserand, and Thomas Séon [1], nous nous sommes intéressés aux régimes de fracture d’une goutte gelée. Nous avons mis en évidence les régimes de fragmentation et hiérarchique présentés dans l’article, ainsi que d’autres régimes que nous avons appelés mixtes. Nous avons vérifié plusieurs conclusions du modèle de fracture présenté dans l’article, comme la pertinence du critère de Griffith ou la loi de puissance caractérisant le temps d’apparition de la première fracture en régime hiérarchique tc ∝ ∆T −5. Nous avons également interprété les régimes mixtes comme émanant des inhomogénéités d’épaisseur dans les gouttes gelées. Nous avons enfin proposé des pistes pour poursuivre l’analyse des régimes mixtes.">
               <div class="left">
                 <span class="badge">PDF</span>
                 <span class="doc-title">Rendu de projet M1 — Projet expérimental : Fracture d’une goutte d’eau gelée (2021)</span>
@@ -640,16 +660,7 @@
               </div>
             </div>
 
-            <div class="doc" data-tooltip="Résumé : En 2016, un article de Chang et al. (5) publié par l’équipe d’accueil a présenté la mesure
-                du profil de densité d’un gaz de Bose après un temps de vol en fonction de l’impulsion des atomes.
-                Ce profil présente des ailes décroissantes en k^−4 à grandes impulsions dont la première interpréta-
-                tion a été rejeté par une étude théorique. La découverte récente d’impuretés de spin dans le gaz a
-                relancé la recherche d’une origine à ces ailes. Pendant ce stage, nous avons simulé la dynamique
-                de temps de vol de ces impuretés en les décrivant comme des particules ponctuelles interagissant
-                avec le champs moyen du condensat de Bose Einstein. Cette approche n’a pas rendu compte des
-                observations expérimentales. Ce résultat nous incite à conclure qu’un modèle plus complexe de
-                la dynamique des l’interaction condensat-impuretés doit être développé dans le futur pour rendre
-                compte des observations expérimentales.">
+            <div class="doc" data-tooltip="Résumé : En 2016, un article de Chang et al. (5) publié par l’équipe d’accueil a présenté la mesure du profil de densité d’un gaz de Bose après un temps de vol en fonction de l’impulsion des atomes. Ce profil présente des ailes décroissantes en k^−4 à grandes impulsions dont la première interprétation a été rejeté par une étude théorique. La découverte récente d’impuretés de spin dans le gaz a relancé la recherche d’une origine à ces ailes. Pendant ce stage, nous avons simulé la dynamique de temps de vol de ces impuretés en les décrivant comme des particules ponctuelles interagissant avec le champs moyen du condensat de Bose Einstein. Cette approche n’a pas rendu compte des observations expérimentales. Ce résultat nous incite à conclure qu’un modèle plus complexe de la dynamique des l’interaction condensat-impuretés doit être développé dans le futur pour rendre compte des observations expérimentales.">
               <div class="left">
                 <span class="badge">PDF</span>
                 <span class="doc-title">Rapport de stage L3 — Dynamique en temps de vol d’impuretés de spin dans un condensat de Bose-Einstein (2020)</span>
@@ -677,6 +688,11 @@
   <div class="tooltip" id="tooltip" role="status" aria-live="polite"></div>
 
   <script>
+    if (window.matchMedia("(min-width: 861px)").matches) {
+      document.querySelectorAll("details.default-open").forEach(d => {
+        d.open = true;
+      });
+    }
     // année auto
     document.getElementById("year").textContent = new Date().getFullYear();
 
